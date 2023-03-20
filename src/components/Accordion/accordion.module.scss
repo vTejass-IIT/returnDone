@@ -1,0 +1,28 @@
+.accordion{
+    padding: 0 25%;
+
+    &_item{
+        padding-bottom: 0;
+    }
+    &_title{
+        display: flex;
+        justify-content: space-between;
+        padding: 5% 0;
+        padding-bottom: 0;
+        cursor: pointer;
+
+        h3{
+            margin: 0;
+            font-size: 1.25rem;
+        }
+    }
+
+    &_content{
+        text-align: left;
+    }
+
+    &_pointer{
+        font-weight: bold;
+        font-size: 22px;
+    }
+}

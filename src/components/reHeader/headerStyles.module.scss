@@ -1,0 +1,61 @@
+@import '../../utils/variables.module.scss';
+
+.re_header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    background: $primaryColor;
+    color: $white;
+    top:0;
+    z-index: 20;
+    &_logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 25%;
+        height: 88px;
+        vertical-align: middle;
+
+        img{
+            max-height: 88px;
+        }
+    }
+    &_quickLinks{
+        display: flex;
+        justify-content: center;
+        width: 25%;
+        flex-direction: column;
+        vertical-align: middle;
+        button {
+            width: 120px;
+            height: 44px;
+        }
+    }
+
+    .re_btn{
+        font-weight: bold;
+        &:hover{
+            font-weight: bold;
+            font-size: 1rem;
+
+            a{
+                font-weight: bold;
+                border-width: 2px;
+            }
+        }
+        @extend .primaryButton;
+
+        a{
+            color: $primaryColor;
+            text-decoration: none;
+            // :hover{
+            //     font-weight: bold;
+            // }
+
+            :visited{
+                color: inherit;
+            }
+        }
+    }
+}
