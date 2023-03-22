@@ -1,0 +1,29 @@
+{
+    "timeSlot": "8to10",
+    "date": "1679547600000",
+    "sNames": [
+        {
+            "receipt": [
+                [FileObject]
+            ],
+            "item": 23,
+            "storeType": "on",
+            "name": "StoreName"
+        },
+        {
+            "receipt": [
+                [FileObject],
+                [FileObject]
+            ],
+            "item": 3,
+            "storeType": "on",
+            "name": "Store 2"
+        }
+    ],
+    "pAddress": "Address",
+    "phone": "3322222222",
+    "email": "returndone@email.com",
+    "lName": "Done",
+    "fName": "Return",
+    "code": "AY1BVZ"
+}
