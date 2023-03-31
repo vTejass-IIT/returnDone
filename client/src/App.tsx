@@ -35,7 +35,8 @@ function App() {
         } />
         <Route path="/submitReturn" element={<>
           <FormPage></FormPage>
-        </>} />
+        </>
+      } />
       </Routes>
     </div>
     </>
