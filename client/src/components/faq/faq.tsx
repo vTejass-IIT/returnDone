@@ -18,7 +18,7 @@ function FAQ() {
         },
         {
             label: 'What items can I return through this service? ',
-            content: 'You can return any item that is eligible for returns as per the seller"s return policy.',
+            content: 'You can return any item that is eligible for returns as per the seller`s return policy.',
         },
         {
             label: 'What happens if my item is damaged during the return process?',
