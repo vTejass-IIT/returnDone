@@ -30,7 +30,7 @@ function FAQ() {
         },
         {
             label: 'How long do I need to wait for the refund? ',
-            content: 'The refund process typically takes 7-10 business days from the date the item is received by the seller. This can vary between sellers. Please check your seller’s return policy. ',
+            content: 'The refund process typically takes 7-10 business days from the date the item is received by the seller. This can vary between sellers. Please check your seller`s return policy. ',
         },
         {
             label: 'Will I be notified once the return is processed? ',
