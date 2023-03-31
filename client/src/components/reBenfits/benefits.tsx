@@ -1,33 +1,35 @@
 import React, { useState } from 'react'
 import Cards from '../Cards/cards';
 import styles from './benefits.module.scss';
-import cardImg from '../../assets/splash.jpg';
-
+import Img1 from '../../assets/Image1.png';
+import Img2 from '../../assets/Image2.png';
+import Img3 from '../../assets/Image3.png';
+import Img4 from '../../assets/Image4.png';
 
 
 function Benefits() {
         const [curCardData, setCurCardData] = useState([
                 {
-                        imgSrc:cardImg,
+                        imgSrc:Img1,
                         heading:'Hassle-free returns',
                         description:'Don\'t worry about the hassle of packaging and shipping your returns. We take care of everything, including doorstep pickup for items to be returned.'
                 },{
-                        imgSrc:cardImg,
+                        imgSrc:Img2,
                         heading:'Save Time',
                         description:'We know that returning items can be time-consuming, so we aim to save you around 3 hours of your valuable time by handling the entire return process for you.'
                 },{
-                        imgSrc:cardImg,
+                        imgSrc:Img3,
                         heading:'Professional Packaging',
                         description:'No boxing, No Taping, No Printing, No Labeling. We take care of everything by professionally packaging your items, giving you peace of mind.'
                 },{
-                        imgSrc:cardImg,
+                        imgSrc:Img4,
                         heading:'Forget Deadline Anxiety',
                         description:'Never miss a return deadline again no matter how busy you are. We return your packages in a timely manner saving you a lot of money.'
                 }
         ]);
         return (
                 <section className={styles.re_Benefits}>
-                        <h3>Benefits sections</h3>
+                        <h3></h3>
                         <div className={styles.re_Benefits_cards}>
                                 {
                                         curCardData.map((item,index)=>(

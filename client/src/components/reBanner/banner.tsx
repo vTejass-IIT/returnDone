@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import styles from './bannerStyles.module.scss';
-import splashImage from "../../assets/banner.jpg";
+import splashImage from "../../assets/Image1.jpg";
 import reBanner from "../../assets/reBanner.png";
 import { Link } from 'react-router-dom';
 
