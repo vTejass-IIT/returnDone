@@ -44,7 +44,7 @@ export default function Banner() {
           </div>
           <div className={styles.reBanner_text}>
               <h1>
-              Want to <span className={styles.primary_text}>Return?</span>, consider it <span  className={styles.primary_text}> Done!</span>
+              Want to <span className={styles.primary_text}>Return</span>, consider it <span  className={styles.primary_text}> Done!</span>
               </h1>
               <button className={styles.reBanner_btn}> 
                 {/* <Link to="/submitReturn">Return NOW!</Link>  */}
