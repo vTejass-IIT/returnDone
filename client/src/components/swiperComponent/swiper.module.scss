@@ -4,4 +4,11 @@
 
 .brand_carousel{
     padding: 4% 0;
+    .swiper-slide-active{
+        margin-right: 0 !important;
+    }
+    .swiper-slide{
+        margin-right: 0 !important;
+    }
 }
+

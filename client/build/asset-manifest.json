@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.009150fb.css",
-    "main.js": "/static/js/main.e96aac00.js",
+    "main.css": "/static/css/main.d6a8b412.css",
+    "main.js": "/static/js/main.39985886.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
-    "static/media/splash.jpg": "/static/media/splash.327ad6d98c5dd8228d9a.jpg",
     "static/media/reBanner.png": "/static/media/reBanner.de6ff00690cb8ba567b0.png",
     "static/media/reLogo_500.svg": "/static/media/reLogo_500.e2ddea18d0d7f99ad1e04e68a7f69362.svg",
+    "static/media/Image3.png": "/static/media/Image3.e6fba462d998abd7e6b5.png",
+    "static/media/Image1.png": "/static/media/Image1.c10f3239d2ba93d6cec9.png",
+    "static/media/Image4.png": "/static/media/Image4.5eec4d463603343b3690.png",
+    "static/media/Image2.png": "/static/media/Image2.77c5f8105fb38d589c90.png",
     "index.html": "/index.html",
-    "main.009150fb.css.map": "/static/css/main.009150fb.css.map",
-    "main.e96aac00.js.map": "/static/js/main.e96aac00.js.map",
+    "main.d6a8b412.css.map": "/static/css/main.d6a8b412.css.map",
+    "main.39985886.js.map": "/static/js/main.39985886.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.009150fb.css",
-    "static/js/main.e96aac00.js"
+    "static/css/main.d6a8b412.css",
+    "static/js/main.39985886.js"
   ]
 }

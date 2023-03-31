@@ -96,6 +96,11 @@ body{
   border-color: $primaryColor !important;
 }
 
+.swiper-slide-active,.swiper-slide-prev {
+  margin-right: 0 !important;
+}
+
+
 .react-datepicker-wrapper{
   input{
     display: block;

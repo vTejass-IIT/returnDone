@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import puma from '../../assets/puma.jpeg';
@@ -7,9 +7,28 @@ import 'swiper/css';
 import styles from './swiper.module.scss';
 
 export default function SwiperCarousel() {
+    const [brandLogos, setbrandLogos] = useState([
+        {
+            logoUrl:puma
+        },
+        {
+            logoUrl:puma
+        },
+        {
+            logoUrl:puma
+        },
+        {
+            logoUrl:puma
+        },
+        {
+            logoUrl:puma
+        }
+        
+    ])
   return (
     <div className={styles.brand_carousel}>
-        <Swiper
+        {brandLogos.length > 0 && 
+            <Swiper
             spaceBetween={50}
             slidesPerView={3}
             centeredSlides={true}
@@ -23,38 +42,14 @@ export default function SwiperCarousel() {
             }}
             loop={true}
             modules={[Autoplay]}
-            >
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
-            <SwiperSlide>
-                <img src={puma}></img>
-            </SwiperSlide>
+            > {brandLogos.map((item,index)=>(
+                        <SwiperSlide key={index}>
+                            <img src={item.logoUrl}></img>
+                        </SwiperSlide>
+                        ))}
             </Swiper>
+        }
+        
     </div>
     
   )
