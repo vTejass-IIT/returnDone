@@ -50,6 +50,7 @@ export default function Banner() {
                 {/* <Link to="/submitReturn">Return NOW!</Link>  */}
                 <a className={styles.reBanner_btn_link} target="_blank" href='https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform'>Return NOW!</a>
               </button>
+              
           </div>
         </div>
         <div className={styles.reRolling_text}>
