@@ -9,7 +9,7 @@ import $ from 'jquery'
 
 
 export default function Banner() {
-  let  words = [
+  let words = [
     "Your Impulsive Buys",
     "Misfit Clothing",
     "Damaged Goods",
@@ -19,45 +19,49 @@ export default function Banner() {
     "Overpriced Buys",
     "Incorrect Packages"
   ]
-  
-  let initiateRoll = ()=>{
-    console.log('call')
-    let i=0;
-    setInterval(()=>{ 
 
-     $('#rollWords').fadeOut(function(){
-      $(this).html(words[i = (i+1)% words.length]).fadeIn()
-     })
-    },3000)
+  let initiateRoll = () => {
+    console.log('call')
+    let i = 0;
+    setInterval(() => {
+
+      $('#rollWords').fadeOut(function () {
+        $(this).html(words[i = (i + 1) % words.length]).fadeIn()
+      })
+    }, 3000)
   }
- 
-  useEffect(()=>{
+
+  useEffect(() => {
     initiateRoll();
     // jQueryCode()
-  },[])
+  }, [])
 
   return (
     <>
-        <div className={styles.reBanner}>
-          <div id="imageParallax" className={`${styles.reBanner_container} ${styles.aspect16_9} ${styles.imageParallax}`}>
-            <img src={reBanner}></img>
-          </div>
-          <div className={styles.reBanner_text}>
-              <h1>
-              Want to <span className={styles.primary_text}>Return</span>, consider it <span  className={styles.primary_text}> Done!</span>
-              </h1>
-              <button className={styles.reBanner_btn}> 
-                {/* <Link to="/submitReturn">Return NOW!</Link>  */}
-                <a className={styles.reBanner_btn_link} target="_blank" href='https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform'>Return NOW!</a>
-              </button>
-              
-          </div>
+      <div className={styles.reBanner}>
+        <div id="imageParallax" className={`${styles.reBanner_container} ${styles.aspect16_9} ${styles.imageParallax}`}>
+          <img src={reBanner}></img>
         </div>
-        <div className={styles.reRolling_text}>
-          <h2>
+        <div className={styles.reBanner_text}>
+          <h1>
+            Want to <span className={styles.primary_text}>Return</span>, consider it <span className={styles.primary_text}> Done!</span>
+          </h1>
+
+          <h5>We return your shopped items for you.</h5>
+          <h5>Save more than 2 hours of your valuable time with our hassle-free returns.</h5>
+
+          <button className={styles.reBanner_btn}>
+            {/* <Link to="/submitReturn">Return NOW!</Link>  */}
+            <a className={styles.reBanner_btn_link} target="_blank" href='https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform'>Return NOW!</a>
+          </button>
+
+        </div>
+      </div>
+      <div className={styles.reRolling_text}>
+        <h2>
           We return <span id="rollWords">Your Impulsive Buys</span> for you.
-          </h2>
-        </div>
-      </>
+        </h2>
+      </div>
+    </>
   )
 }
