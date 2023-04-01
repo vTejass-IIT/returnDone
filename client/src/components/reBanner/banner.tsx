@@ -28,7 +28,7 @@ export default function Banner() {
       $('#rollWords').fadeOut(function () {
         $(this).html(words[i = (i + 1) % words.length]).fadeIn()
       })
-    }, 3000)
+    }, 2000)
   }
 
   useEffect(() => {
