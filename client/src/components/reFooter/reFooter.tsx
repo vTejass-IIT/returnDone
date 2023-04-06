@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './reFooter.module.scss'
-import reHeader from "../../assets/reLogo_500.svg";
+import reHeader from "../../assets/relogo.png";
 import fb from "../../assets/facebook.svg";
 import { faFacebook, faWhatsapp, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,10 +22,10 @@ function Footer() {
                         <h4>Get in Touch</h4>
                         <div>
                             <p>
-                                <span><b>Email: </b></span> <span>returnDone2023@gmail.com</span>
+                                <span><b>Email: </b></span> <span><a href="mailto:returnDone2023@gmail.com">returnDone2023@gmail.com</a></span>
                             </p>
                             <p>
-                                <span><b>Phone: </b></span> <span>(312)-934-5955</span>
+                                <span><b>Phone: </b></span> <span><a href="tel:312-934-5955">(312)-934-5955</a></span>
                             </p>
                             
                         </div>
@@ -48,7 +48,7 @@ function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href='' className={styles.reFooter_icon_link}>
+                                <a href='https://wa.me/3129345955' target="_blank" className={styles.reFooter_icon_link}>
                                     <FontAwesomeIcon icon={faWhatsapp} />
                                 </a>
                             </li>

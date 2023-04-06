@@ -52,6 +52,7 @@
         }
 
         h5{
+            font-size: 1rem;
             @include for-tab-only{
                 font-size: 0.75rem;
                 display: block;
@@ -63,6 +64,7 @@
     }
 
     &_btn{
+        margin-top: 5px;
         @extend .secondaryButton;
 
         &_link{
@@ -73,10 +75,6 @@
                 color: $secondaryColor !important;
             }
         }
-    }
-
-    .aspect16_9{
-        // padding-bottom: 27.25%;
     }
 }
 

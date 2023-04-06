@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './headerStyles.module.scss';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import reHeader from "../../assets/reLogo_500.svg";
+import reHeader from "../../assets/relogo.png";
 import $ from 'jquery'
 
 const Header = () => {

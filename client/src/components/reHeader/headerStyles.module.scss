@@ -25,6 +25,9 @@
         }
 
         img{
+            padding: 5px 0;
+            margin-left: 2%;
+            max-width: 235px;
             max-height: 88px;
             @include for-tab-only{
                 height: 65px;
