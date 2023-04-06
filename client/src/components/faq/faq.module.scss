@@ -1,0 +1,19 @@
+@import '../../utils/variables.module.scss';
+
+.reFAQs{
+    margin: 0% auto;
+    padding: 2% 0;
+    background: $tertiaryColor;
+    h2{
+        @include for-tab-only{
+            font-size: 1.25rem;
+        }
+    }
+    h3{
+        text-align: left;
+    }
+
+    @include for-tab-only{
+        padding: 2% 5%;
+    }
+}

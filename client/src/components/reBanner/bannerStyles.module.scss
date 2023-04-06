@@ -41,6 +41,24 @@
 
         h1{
             font-size: 2.75rem;
+
+            @include for-tab-only{
+                font-size: 1.25rem
+            }
+
+            @include for-phone-only{
+                font-size: 0.85rem
+            }
+        }
+
+        h5{
+            @include for-tab-only{
+                font-size: 0.75rem;
+                display: block;
+            }
+            @include for-phone-only{
+                display: none;
+            }
         }
     }
 
@@ -79,6 +97,15 @@
 
 .reRolling_text{
     margin: 2% 0;
+    h2{
+        @include for-tab-only{
+            font-size: 1.25rem;
+        }
+
+        @include for-phone-only{
+            font-size: 1rem;
+        }
+    }
     span{
         color: $primaryColor;
     }

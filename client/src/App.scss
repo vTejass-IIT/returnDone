@@ -8,6 +8,12 @@ body{
   text-align: center;
   padding-top: 88px;
   background-color: $secondaryColor;
+  @include for-tab-only{
+    padding-top: 65px;
+  }
+  @include for-phone-only{
+    padding-top: 45px;
+  }
 }
 
 // input[type="radio"] {
@@ -96,8 +102,20 @@ body{
   border-color: $primaryColor !important;
 }
 
-.swiper-slide-active,.swiper-slide-prev {
-  margin-right: 0 !important;
+.swiper-slide{
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+
+  img{
+    width: 125px;
+    @include for-tab-only{
+      width: 100px;
+    }
+
+    @include for-phone-only{
+      width: 75px;
+    }
+  }
 }
 
 

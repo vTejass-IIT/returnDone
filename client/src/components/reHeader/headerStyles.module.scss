@@ -9,27 +9,77 @@
     color: $white;
     top:0;
     z-index: 20;
+    padding: 0 2%;
     &_logo{
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 25%;
-        height: 88px;
+        // height: 88px;
         vertical-align: middle;
+        @include for-tab-only{
+            height: 65px;
+        }
+        @include for-phone-only{
+            height: 45px;
+        }
 
         img{
             max-height: 88px;
+            @include for-tab-only{
+                height: 65px;
+            }
+            @include for-phone-only{
+                max-height: 45px;
+            }
         }
     }
     &_quickLinks{
         display: flex;
         justify-content: center;
-        width: 25%;
+        // width: 40%;
         flex-direction: column;
         vertical-align: middle;
         button {
             width: 120px;
             height: 44px;
+        }
+        ul{
+            list-style: none;
+            display: inline-block;
+            margin: 0;
+            
+            li{
+                display: inline-block;
+                padding: 0 1rem;
+
+                a{
+                    color: $secondaryColor;
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                    &:visited{
+                        color: inherit;
+                    }
+                }
+
+                &:first-child{
+                    @include for-phone-only{
+                        display: none;
+                    }
+                }
+                &:nth-child(2){
+                    @include for-phone-only{
+                        display: none;
+                    }
+                }
+                &:nth-child(3){
+                    @include for-phone-only{
+                        display: none;
+                    }
+                }
+            }
         }
     }
 

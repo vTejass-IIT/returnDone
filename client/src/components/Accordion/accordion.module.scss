@@ -1,6 +1,13 @@
-.accordion{
-    padding: 0 25%;
+@import '../../utils/variables.module.scss';
 
+.accordion{
+    padding: 0;
+    width: 75%;
+    margin: 0 auto;
+
+    @include for-tab-only{
+        width: 100%;
+    }
     &_item{
         padding-bottom: 0;
     }
@@ -10,15 +17,23 @@
         padding: 5% 0;
         padding-bottom: 0;
         cursor: pointer;
+        align-items: center;
 
         h3{
             margin: 0;
             font-size: 1.25rem;
+
+            @include for-tab-only{
+                font-size: 1rem;
+            }
         }
     }
 
     &_content{
         text-align: left;
+        @include for-tab-only{
+            font-size: 0.85rem;
+        }
     }
 
     &_pointer{

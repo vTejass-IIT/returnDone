@@ -100,21 +100,24 @@ export default function SwiperCarousel() {
     ])
   return (
     <div className={styles.brand_carousel}>
+        {/* <h2>Brands</h2> */}
         {brandLogos.length > 0 && 
             <Swiper
             spaceBetween={50}
             slidesPerView={3}
             centeredSlides={true}
-            //   initialSlide ={1}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
             autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
-                // reverseDirection: false,
             }}
             loop={true}
             modules={[Autoplay]}
+            breakpoints={{
+                "@0.00": {
+                  slidesPerView: 3,
+                  spaceBetween: 0,
+                },
+              }}
             > {brandLogos.map((item,index)=>(
                         <SwiperSlide key={index}>
                             <img src={item.logoUrl} width={150}></img>

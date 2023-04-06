@@ -53,29 +53,15 @@ function FAQ() {
     }
   return (
     <>
-    <h2>FAQs</h2>
+    <section className={styles.reFAQs} id="reFAQs">
+        <h2>FAQs</h2>
         {accordionPanels.map((item,index)=>{
             return(
-                <Accordion index={index} label={item.label} content={item.content} >
+                <Accordion styles={"padding:0"} index={index} label={item.label} content={item.content} >
                 </Accordion>
-            // <div className={styles.accordion} key={index}>
-            //     <div className={styles.accordion_item}>
-            //         <div className={styles.accordion_title} onClick={()=>activateTab(index)}>
-            //             <div>
-            //                 {item.label} 
-            //             </div>
-            //             <div>
-            //                 {isActive?"+":"-"}
-            //             </div>
-            //         </div>
-            //         <div className={styles.accordion_content}>
-            //             {item.content}
-            //         </div>
-            //     </div>
-            // </div>
-                
             )
         })}
+    </section>
     </>
   )
 }

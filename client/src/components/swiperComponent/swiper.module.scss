@@ -3,12 +3,14 @@
 // }
 
 .brand_carousel{
-    padding: 4% 0;
+    padding: 4% 4%;
     .swiper-slide-active{
         margin-right: 0 !important;
     }
     .swiper-slide{
         margin-right: 0 !important;
+        margin-top: auto !important;
+        margin-bottom: auto !important;
     }
 }
 

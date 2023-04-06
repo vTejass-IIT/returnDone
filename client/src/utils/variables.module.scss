@@ -1,6 +1,32 @@
 $primaryColor: #0d9692;
 $secondaryColor: #d9dfee;
 $white: #fff;
+$tertiaryColor: #c4e4e3;
+
+@mixin for-phone-only {
+    @media (max-width: 599px) { @content; }
+}
+
+@mixin for-tab-only {
+    @media (max-width: 1119px ) { @content; }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) { @content; }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+}
+
 
 .primaryButton{
     background-color: $secondaryColor;
@@ -10,6 +36,18 @@ $white: #fff;
     font-size: 0.875rem;
     width: 120px;
     height: 44px;
+
+    @include for-tab-only(){
+        font-size: 0.75rem;
+        width: 100px;
+        height: 30px;
+    }
+
+    @include for-phone-only(){
+        font-size: 0.65rem;
+        width: 90px;
+        height: 25px;
+    }
 }
 
 .secondaryButton{
@@ -20,6 +58,18 @@ $white: #fff;
     font-size: 0.875rem;
     width: 120px;
     height: 44px;
+
+    @include for-tab-only(){
+        font-size: 0.75rem;
+        width: 100px;
+        height: 30px;
+    }
+
+    @include for-phone-only(){
+        font-size: 0.65rem;
+        width: 90px;
+        height: 25px;
+    }
 }
 
 // :export {

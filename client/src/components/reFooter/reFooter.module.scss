@@ -1,0 +1,69 @@
+@import '../../utils/variables.module.scss';
+
+.reFooter{
+    background: $primaryColor;
+    padding: 4%;
+    color: $secondaryColor;
+    font-size: 1rem;
+    @include for-phone-only{
+        font-size: 0.75rem;
+    }
+    h4{
+        text-decoration: underline;
+        font-size: 1.25rem;
+
+        @include for-phone-only{
+            font-size: 1rem;
+        }
+    }
+    p{
+        margin-bottom: 0.75rem;
+    }
+    &_section{
+        display: flex;
+        justify-content: space-between;
+        @include for-phone-only{
+            flex-direction: column;
+        }
+        img{
+            width: 250px;
+            @include for-phone-only{
+                width: 125px;
+                display: none;
+            }
+        }
+
+        &_contact{
+            text-align: left;
+        }
+    }
+
+    &_copy{
+        text-align: left;
+    }
+
+    &_icon{
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li{
+            padding: 0 1rem;
+
+            &:first-child{
+                padding-left: 0;
+            }
+        }
+        &_link{
+            font-size: 1.25rem;
+            color: $secondaryColor;
+            &:hover,&:visited{
+                color: inherit;
+            }
+        }
+    }
+
+    &_copy{
+        margin: 1rem 0 0 0;
+    }
+}

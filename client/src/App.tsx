@@ -9,10 +9,12 @@ import Banner from "./components/reBanner/banner";
 import Benefits from './components/reBenfits/benefits';
 import ReturnForm from './components/returnForm/returnForm';
 import FormPage from './components/formPage/formPage';
+import Footer from './components/reFooter/reFooter';
 
 import variables from './utils/variables.module.scss';
 import Faq from './components/faq/faq';
 import SwiperCarousel from './components/swiperComponent/swiper';
+import ReSteps from './components/reSteps/reSteps';
 
 function App() {
   return (
@@ -25,12 +27,11 @@ function App() {
         <>
           <Header></Header>
           <Banner></Banner>
+          <ReSteps></ReSteps>
           <Benefits></Benefits>
-          {/* <div>
-            <Cards></Cards>
-          </div> */}
           <SwiperCarousel></SwiperCarousel>
           <Faq></Faq>
+          <Footer></Footer>
         </>
         } />
         <Route path="/submitReturn" element={<>
