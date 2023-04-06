@@ -28,21 +28,23 @@ function Benefits() {
                 }
         ]);
         return (
-                <section className={styles.re_Benefits} id="reBenefits">
-                        <h3></h3>
-                        <div className={styles.re_Benefits_cards}>
-                                {
-                                        curCardData.map((item, index) => (
-                                                <Cards
-                                                        key={item.heading}
-                                                        imgSrc={item.imgSrc}
-                                                        heading={item.heading}
-                                                        description={item.description}
-                                                ></Cards>
-                                        ))
-                                }
+                <>
+                        <section className={styles.re_Benefits} id="reBenefits">
+                                <h3></h3>
+                                <div className={styles.re_Benefits_cards}>
+                                        {
+                                                curCardData.map((item, index) => (
+                                                        <Cards
+                                                                key={item.heading}
+                                                                imgSrc={item.imgSrc}
+                                                                heading={item.heading}
+                                                                description={item.description}
+                                                        ></Cards>
+                                                ))
+                                        }
 
-                        </div>
+                                </div>
+                        </section>
                         <div className={styles.pricing}>
                                 {/* <h2>What is Lorem Ipsum?</h2> */}
                                 <h3> Life is too short to do your returns yourself. Focus on the more important things and leave the returns to us.
@@ -54,7 +56,7 @@ function Benefits() {
                                         </p>
                                 
                         </div>
-                </section>
+                </>
         )
 }
 

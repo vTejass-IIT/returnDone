@@ -1,7 +1,7 @@
 @import '../../utils/variables.module.scss';
 
 .re_Benefits{
- padding: 0 2% 2%;
+ padding: 0 2%;
  background: $tertiaryColor;
 
  &_cards{
@@ -14,9 +14,11 @@
 }
 
 .pricing {
+   background: $secondaryColor;
+   padding: 2% 0 0 0;
    h3{
-      font-size: 1.5rem;
-      font-weight: normal;
+      font-size: 1.75rem;
+      // font-weight: normal;
 
       @include for-tab-only{
          font-size: 1rem;
