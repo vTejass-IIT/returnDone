@@ -5,6 +5,12 @@
     width: 100%;
     height: auto;
     padding-bottom: 32.95%;
+    @include for-tab-only-potrait{
+        padding-bottom: 109.95%;
+    }
+    @include for-phone-only{
+        padding-bottom: 109.95%;
+    }
     // overflow: hidden;
     // padding-bottom: 100%;
     
@@ -35,30 +41,57 @@
     &_text{
         position: absolute;
         top: 18%;
-        left: 50%;
-        transform: translate(-85%, -0%);
-        -webkit-transform: translate(-85%,-0%);
+        left: 54%;
+        transform: translate(-67%, -0%);
+        -webkit-transform: translate(-67%,-0%);
+        width: 100%;
 
+        
+
+        @include for-tab-only-potrait{
+            left: auto;
+            transform: translate(0%, -0%);
+            -webkit-transform: translate(0%,-0%);
+            top: 10%;
+        }
+
+        @include for-phone-only{
+            left: auto;
+            transform: translate(0%, -0%);
+            -webkit-transform: translate(0%,-0%);
+            top: 10%;
+        }
         h1{
-            font-size: 2.75rem;
-
+            font-size: 3rem;
+            margin-bottom: 2rem;
             @include for-tab-only{
-                font-size: 1.25rem
+                font-size: 3rem;
+                margin-bottom: 1rem;
             }
 
             @include for-phone-only{
-                font-size: 0.85rem
+                font-size: 2.5rem;
+                margin: 1rem 1rem 1rem 2rem;
+                text-align: left;
+                width: 85%;
             }
         }
 
         h5{
-            font-size: 1rem;
+            font-size: 1.15rem;
             @include for-tab-only{
-                font-size: 0.75rem;
+                font-size: 1rem;
                 display: block;
             }
             @include for-phone-only{
                 display: none;
+            }
+
+            &:last-of-type{
+                margin-bottom: 2rem;
+                @include for-tab-only{
+                    margin-bottom: 1rem;
+                }
             }
         }
     }
@@ -66,7 +99,9 @@
     &_btn{
         margin-top: 5px;
         @extend .secondaryButton;
-
+        width: 150px;
+        height: 50px;
+        font-size: 1.15rem;
         &_link{
             color: $secondaryColor;
             text-decoration: none;
@@ -75,11 +110,23 @@
                 color: $secondaryColor !important;
             }
         }
+
+        @include for-phone-only{
+            display: none;
+        }
     }
 }
 
 .primary_text{
     color: $primaryColor;
+    // font-size: 2.5rem;
+    // font-weight: bold;
+    background: -webkit-linear-gradient(#0d9692, #203534);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @include for-phone-only{
+        display: block;
+    }
 }
 
   .re_header{
@@ -94,18 +141,28 @@
   }
 
 .reRolling_text{
-    margin: 2% 0;
+    padding: 6% 0;
+    background: $tertiaryColor;
+    @include for-phone-only{
+        padding: 12% 4%;
+    }
     h2{
+        font-size: 3.75rem;
         @include for-tab-only{
-            font-size: 1.25rem;
+            font-size: 3em;
         }
 
         @include for-phone-only{
-            font-size: 1rem;
+            font-size: 1.85rem;
         }
     }
     span{
         color: $primaryColor;
+        // font-size: 2.5rem;
+        // font-weight: bold;
+        background: -webkit-linear-gradient(#0d9692, #203534);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 

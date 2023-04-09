@@ -1,10 +1,9 @@
 import React from 'react'
-import cardImage from '../../assets/puma.jpeg';
 import styles from './cards.module.scss'
 
-function Cards(props: { imgSrc: string | undefined; heading: string; description: string }) {
+function Cards(props: { imgSrc: string | undefined; heading: string; description: string; shadow: boolean }) {
   return (
-    <div className={`${styles.cards}`}>
+    <div className={`${styles.cards} ${props.shadow ? styles.shadow : ''}`}>
         <div className={styles.cards_image}>
             <img src={props.imgSrc} alt=''></img>
         </div>

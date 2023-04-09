@@ -5,7 +5,7 @@
     justify-content: space-between;
     width: 100%;
     position: fixed;
-    background: $primaryColor;
+    background: -webkit-linear-gradient( #0d9692, #203534);
     color: $white;
     top:0;
     z-index: 20;
@@ -21,7 +21,7 @@
             height: 65px;
         }
         @include for-phone-only{
-            height: 45px;
+            height: 65px;
         }
 
         img{
@@ -55,10 +55,11 @@
             li{
                 display: inline-block;
                 padding: 0 1rem;
-
+                
                 a{
                     color: $secondaryColor;
                     text-decoration: none;
+                    font-weight: bold;
                     &:hover{
                         text-decoration: underline;
                     }
@@ -67,19 +68,19 @@
                     }
                 }
 
-                &:first-child{
-                    @include for-phone-only{
-                        display: none;
-                    }
+                @include for-tab-only{
+                    display: none;
                 }
-                &:nth-child(2){
-                    @include for-phone-only{
-                        display: none;
+            
+                &:last-child{
+                    a{
+                        &:hover{
+                            text-decoration: none;
+                            font-size: inherit;
+                        }
                     }
-                }
-                &:nth-child(3){
-                    @include for-phone-only{
-                        display: none;
+                    @include for-tab-only{
+                        display: block;
                     }
                 }
             }
@@ -88,15 +89,15 @@
 
     .re_btn{
         font-weight: bold;
-        &:hover{
-            font-weight: bold;
-            font-size: 1rem;
+        // &:hover{
+        //     font-weight: bold;
+        //     font-size: 1rem;
 
-            a{
-                font-weight: bold;
-                border-width: 2px;
-            }
-        }
+        //     a{
+        //         font-weight: bold;
+        //         border-width: 2px;
+        //     }
+        // }
         @extend .primaryButton;
 
         a{

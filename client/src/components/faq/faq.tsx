@@ -9,6 +9,10 @@ function FAQ() {
             content: 'We provide a doorstep pickup service for all the items you want to return. All you need to do is book a pickup online through our website and provide us with the details of the items you wish to return. Our team will then come and collect the items from your doorstep.',
         },
         {
+            label: 'Can I return items without packaging? ',
+            content: 'Yes, you can. Leave the worry of packaging and printing out your label on us. Our experts take care of it all.',
+        },
+        {
             label: 'How long does the return process take?',
             content: 'We pick up items from your doorstep at your conveniently selected date and time slot. As soon as we have the package we get it to the retailer in a timely manner at the earliest without missing the deadline and get you your deserved refund ASAP.',
         },	
@@ -36,28 +40,20 @@ function FAQ() {
             label: 'Will I be notified once the return is processed? ',
             content: 'Yes, you will be notified via email when the return is processed along with your return receipt. ',
         },
-        {
-            label: 'Can I return items without packaging? ',
-            content: 'Yes, you can. Leave the worry of packaging and printing out your label on us. Our experts take care of it all.',
-        },
         // {
         //     label: 'Do you provide a tracking number for the return delivery? ',
         //     content: 'Yes, we provide a tracking number for all return deliveries. You can use this tracking number to track the status of your return.',
         // },
     ];
     const [accordionPanels, setAccordionPanels] = useState(panels);
-    const [isActive, setIsActive] = useState(true);
 
-    let activateTab = (index: number)=>{
-        console.log(index);
-    }
   return (
     <>
     <section className={styles.reFAQs} id="reFAQs">
-        <h2>FAQs</h2>
+        <h2>Frequently Asked Questions</h2>
         {accordionPanels.map((item,index)=>{
             return(
-                <Accordion styles={"padding:0"} index={index} label={item.label} content={item.content} >
+                <Accordion key={index} styles={"padding:0"} index={index} label={item.label} content={item.content} >
                 </Accordion>
             )
         })}

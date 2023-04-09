@@ -1,5 +1,5 @@
 $primaryColor: #0d9692;
-$secondaryColor: #d9dfee;
+$secondaryColor:#fff;// #d9dfee;
 $white: #fff;
 $tertiaryColor: #c4e4e3;
 
@@ -9,6 +9,10 @@ $tertiaryColor: #c4e4e3;
 
 @mixin for-tab-only {
     @media (max-width: 1119px ) { @content; }
+}
+
+@mixin for-tab-only-potrait {
+    @media (max-width: 900px ) { @content; }
 }
 
 @mixin for-tablet-portrait-up {
@@ -31,33 +35,55 @@ $tertiaryColor: #c4e4e3;
 .primaryButton{
     background-color: $secondaryColor;
     color: $primaryColor;
-    border: 1px solid $primaryColor;
+    border: 2px solid $primaryColor;
     border-radius: 25px;
-    font-size: 0.875rem;
+    font-size: 1.15rem;
     width: 135px;
     height: 44px;
 
+    &:hover{
+        background: -webkit-linear-gradient( #0d9692, #203534);
+        color: white;
+        & a{
+            text-decoration: underline;
+            -webkit-text-fill-color: white;
+            &:hover{
+                color: white;
+                -webkit-text-fill-color: white;
+                text-decoration: underline;
+            }
+        }
+    }
+    a{
+        background: -webkit-linear-gradient( #0d9692, #203534);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
     @include for-tab-only(){
-        font-size: 0.75rem;
-        width: 100px;
-        height: 30px;
+        font-size: 0.85rem;
+        width: 125px;
+        height: 35px;
     }
 
     @include for-phone-only(){
-        font-size: 0.65rem;
-        width: 90px;
-        height: 25px;
+        font-size: 0.85rem;
+        width: 125px;
+        height: 35px;
     }
 }
 
 .secondaryButton{
-    background-color: $primaryColor;
+    background: linear-gradient(#0d9692, #203534);
     color: $secondaryColor;
     border: 1px solid $primaryColor;
     border-radius: 25px;
-    font-size: 0.875rem;
+    font-size: 1.15rem;
     width: 135px;
     height: 44px;
+    &:hover{
+        background: $primaryColor;
+    }
 
     @include for-tab-only(){
         font-size: 0.75rem;

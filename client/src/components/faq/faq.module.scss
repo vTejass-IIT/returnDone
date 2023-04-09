@@ -2,18 +2,33 @@
 
 .reFAQs{
     margin: 0% auto;
-    padding: 2% 0;
+    padding: 6% 0;
     background: $tertiaryColor;
+    @include for-phone-only{
+        padding: 12% 0;
+    }
     h2{
+        font-size: 3.75rem;
         @include for-tab-only{
-            font-size: 1.25rem;
+            font-size: 3rem;
         }
+        @include for-tab-only{
+            font-size: 2rem;
+        }
+        // font-weight: bold;
+        background: -webkit-linear-gradient(#0d9692, #203534);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     h3{
         text-align: left;
     }
 
     @include for-tab-only{
-        padding: 2% 5%;
+        padding: 6% 5%;
+    }
+
+    @include for-phone-only{
+        padding: 12% 5%;
     }
 }

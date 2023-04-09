@@ -99,15 +99,16 @@ export default function SwiperCarousel() {
         
     ])
   return (
-    <div className={styles.brand_carousel}>
-        {/* <h2>Brands</h2> */}
+    <div className={styles.brand_carousel} id="reBrands">
+        <h3>Whether you bought online or in-store, we got you covered</h3>
+        <h3>We return from these brands and many more...</h3>
         {brandLogos.length > 0 && 
             <Swiper
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={3}
             centeredSlides={true}
             autoplay={{
-                delay: 2500,
+                delay: 1500,
                 disableOnInteraction: false,
             }}
             loop={true}

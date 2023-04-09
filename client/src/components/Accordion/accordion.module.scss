@@ -18,6 +18,9 @@
         padding-bottom: 0;
         cursor: pointer;
         align-items: center;
+        @include for-tab-only{
+            padding: 8% 0;
+        }
 
         h3{
             margin: 0;

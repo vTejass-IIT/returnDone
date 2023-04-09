@@ -11,7 +11,7 @@ function Benefits() {
         const [curCardData, setCurCardData] = useState([
                 {
                         imgSrc: Img1,
-                        heading: 'Hassle-free returns',
+                        heading: 'Hassle-free Returns',
                         description: 'Don\'t worry about the hassle of packaging and shipping your returns. We take care of everything, including doorstep pickup for items to be returned.'
                 }, {
                         imgSrc: Img2,
@@ -30,7 +30,7 @@ function Benefits() {
         return (
                 <>
                         <section className={styles.re_Benefits} id="reBenefits">
-                                <h3></h3>
+                                <h3>How we are Revolutionizing Returns</h3>
                                 <div className={styles.re_Benefits_cards}>
                                         {
                                                 curCardData.map((item, index) => (
@@ -39,6 +39,7 @@ function Benefits() {
                                                                 imgSrc={item.imgSrc}
                                                                 heading={item.heading}
                                                                 description={item.description}
+                                                                shadow={true}
                                                         ></Cards>
                                                 ))
                                         }
@@ -47,14 +48,16 @@ function Benefits() {
                         </section>
                         <div className={styles.pricing}>
                                 {/* <h2>What is Lorem Ipsum?</h2> */}
-                                <h3> Life is too short to do your returns yourself. Focus on the more important things and leave the returns to us.
-                                </h3>
+                                <h3> Life is too short to do your returns yourself</h3>
+                                <h3> Focus on more important things and leave the returns to us.</h3>
                                         <p>
-                                                <button className={styles.reBanner_btn}>
-                                                        <a className={styles.reBanner_btn_link} target="_blank" href='https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform'>Return NOW!</a>
+                                                <button className={styles.reBanner_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
+                                                        <a className={styles.reBanner_btn_link} target="_blank" href='javascript:;'>Return Now</a>
                                                 </button>
                                         </p>
                                 
+                        </div>
+                        <div className={styles.hrRule}>
                         </div>
                 </>
         )

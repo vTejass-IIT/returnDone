@@ -14,14 +14,6 @@ code {
     monospace;
 }
 
-.swiper-slide{
-  padding: 2% 0;
-}
-.swiper-slide-active{
-  zoom: 1.2;
-  padding: 0 !important;
-}
-
 /*
   Color Codes
 Background - #D9DFEF
