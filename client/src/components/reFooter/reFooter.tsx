@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from './reFooter.module.scss'
 import reHeader from "../../assets/relogo.png";
-import fb from "../../assets/facebook.svg";
+// import fb from "../../assets/facebook.svg";
 import { faFacebook, faWhatsapp, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 
 function Footer() {
-    let fbStyle = {
-        backgroundImage:`url(${fb})`
-    }
+    // let fbStyle = {
+    //     backgroundImage:`url(${fb})`
+    // }
   return (
     <>
         <footer className={styles.reFooter}>
@@ -57,7 +56,7 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.reFooter_copy}>
-            <FontAwesomeIcon icon={faCopyright} /> 2023, All rights reserved
+            <span>&copy;</span> 2023, All rights reserved
             </div>
         </footer>
     </>
