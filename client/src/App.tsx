@@ -23,9 +23,11 @@ function App() {
         <>
           <Header></Header>
           <Banner></Banner>
+          <SwiperCarousel></SwiperCarousel>
           <ReSteps></ReSteps>
           <Benefits></Benefits>
-          <SwiperCarousel></SwiperCarousel>
+          
+          
           <Faq></Faq>
           <Footer></Footer>
         </>

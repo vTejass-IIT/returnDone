@@ -52,13 +52,13 @@ function Benefits() {
                                 <h3> Focus on more important things and leave the returns to us.</h3>
                                         <p>
                                                 <button className={styles.reBanner_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
-                                                        <a className={styles.reBanner_btn_link} target="_blank" href='javascript:;'>Return Now</a>
+                                                        <a className={styles.reBanner_btn_link} href='javascript:;'>Return Now</a>
                                                 </button>
                                         </p>
                                 
                         </div>
-                        <div className={styles.hrRule}>
-                        </div>
+                        {/* <div className={styles.hrRule}>
+                        </div> */}
                 </>
         )
 }

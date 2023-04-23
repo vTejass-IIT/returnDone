@@ -18,15 +18,11 @@ function FAQ() {
         },	
         {
             label: 'Do I have to pay for the return service?',
-            content: 'No, our return service is free of cost.',
+            content: 'No, our return service is free of cost for a limited time only. We are a small startup working to get traction and reach as many people as possible. We hope to get an opportunity to serve you. ',
         },
         {
             label: 'What items can I return through this service? ',
             content: 'You can return any item that is eligible for returns as per the seller`s return policy.',
-        },
-        {
-            label: 'What happens if my item is damaged during the return process?',
-            content: 'We take utmost care while handling the items and packing them for return. However, if the item is damaged during the return process, we will work with the seller to get you the appropriate compensation.',
         },
         {
             label: 'Do I need to provide any proof of purchase for the item I am returning? ',

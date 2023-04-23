@@ -48,3 +48,14 @@
     // }
 }
 
+.hrRule{
+    width: 45%;
+    margin: 0 auto;
+    height: 4px;
+    margin-top: 12%;
+    background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
+    @include for-phone-only{
+       width: 70%;
+    }
+    // border: 2px solid red;
+ }

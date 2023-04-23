@@ -16,7 +16,7 @@ $tertiaryColor: #c4e4e3;
 }
 
 @mixin for-tablet-portrait-up {
-    @media (min-width: 600px) { @content; }
+    @media (min-width: 600px) and (max-width: 767px) { @content; }
 }
 
 @mixin for-tablet-landscape-up {

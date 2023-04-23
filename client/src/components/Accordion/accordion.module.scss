@@ -18,7 +18,7 @@
         padding-bottom: 0;
         cursor: pointer;
         align-items: center;
-        @include for-tab-only{
+        @include for-phone-only{
             padding: 8% 0;
         }
 

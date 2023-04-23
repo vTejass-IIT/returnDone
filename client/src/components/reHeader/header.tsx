@@ -39,7 +39,7 @@ const Header = () => {
             <li>
               <button className={styles.re_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}> 
                 {/* <Link to="/submitReturn">Return NOW!</Link>  */}
-                  <a target="_blank" href='javascript:;'>Return Now</a>
+                  <a href='javascript:;'>Return Now</a>
                 </button>
             </li> 
             }

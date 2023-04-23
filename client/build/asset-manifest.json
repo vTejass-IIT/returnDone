@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e512d7fd.css",
-    "main.js": "/static/js/main.bfbf58fa.js",
+    "main.css": "/static/css/main.e941f622.css",
+    "main.js": "/static/js/main.b60486eb.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/lotus-pose.gif": "/static/media/lotus-pose.546d7fe1c97d52d1b45d.gif",
     "static/media/return_now_click.gif": "/static/media/return_now_click.648188b6b08698b138e9.gif",
@@ -35,12 +35,12 @@
     "static/media/Nike.png": "/static/media/Nike.0d1f3e97324b4388d3f3.png",
     "static/media/Puma.png": "/static/media/Puma.dc1444673d918ad6c9fe.png",
     "index.html": "/index.html",
-    "main.e512d7fd.css.map": "/static/css/main.e512d7fd.css.map",
-    "main.bfbf58fa.js.map": "/static/js/main.bfbf58fa.js.map",
+    "main.e941f622.css.map": "/static/css/main.e941f622.css.map",
+    "main.b60486eb.js.map": "/static/js/main.b60486eb.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e512d7fd.css",
-    "static/js/main.bfbf58fa.js"
+    "static/css/main.e941f622.css",
+    "static/js/main.b60486eb.js"
   ]
 }

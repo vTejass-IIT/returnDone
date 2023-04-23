@@ -5,11 +5,15 @@
     width: 100%;
     height: auto;
     padding-bottom: 32.95%;
+    
     @include for-tab-only-potrait{
-        padding-bottom: 109.95%;
+        padding-bottom: 159.95%;
+    }
+    @include for-tab-only{
+        padding-bottom: 32.95%;
     }
     @include for-phone-only{
-        padding-bottom: 109.95%;
+        padding-bottom: 159.95%;
     }
     // overflow: hidden;
     // padding-bottom: 100%;
@@ -24,9 +28,27 @@
         width: 100%;
         height: 100%;
         // max-height: 420px;
+        @include for-phone-only{
+            // max-height: 85vh;
+            overflow: hidden;
+        }
+        &::before{
+            @include for-phone-only{
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                background: -webkit-linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2) , rgba(13,150,146,0.6));
+            }
+        }
         img{
             width: 100%;
             max-width: 100%;
+            @include for-phone-only{
+                // height: 85vh;
+            }
             // height: auto;
             // max-height: 420px;
         }
@@ -52,14 +74,22 @@
             left: auto;
             transform: translate(0%, -0%);
             -webkit-transform: translate(0%,-0%);
-            top: 10%;
+            top: 0%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
         }
 
         @include for-phone-only{
             left: auto;
             transform: translate(0%, -0%);
             -webkit-transform: translate(0%,-0%);
-            top: 10%;
+            top: 0%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
         }
         h1{
             font-size: 3rem;
@@ -67,23 +97,24 @@
             @include for-tab-only{
                 font-size: 3rem;
                 margin-bottom: 1rem;
+                margin-top: 5vh;
             }
 
             @include for-phone-only{
                 font-size: 2.5rem;
-                margin: 1rem 1rem 1rem 2rem;
+                margin: 25vh 1rem 1rem 2rem;
                 text-align: left;
                 width: 85%;
             }
         }
-
+    
         h5{
             font-size: 1.15rem;
             @include for-tab-only{
                 font-size: 1rem;
                 display: block;
             }
-            @include for-phone-only{
+            @include for-tab-only-potrait{
                 display: none;
             }
 
@@ -111,9 +142,46 @@
             }
         }
 
-        @include for-phone-only{
+        @include for-tab-only-potrait{
             display: none;
         }
+    }
+}
+
+.desktop_only{
+    display: block;
+
+    @include for-tab-only-potrait{
+        display: none;
+    }
+}
+.mobile_only{
+    display: none;
+    @include for-tab-only-potrait{
+        display: block;
+    }
+}
+
+h1.mobile_heading{
+    display: none;
+    color: $white;
+    // font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    text-shadow: 3px 2px 2px #225957;
+    @include for-tab-only-potrait{
+        display: block;
+    }
+}
+
+.mobile_desc{
+    color: $white;
+    padding: 0 4% 5%;
+    font-size: 14px;
+
+    @include for-tablet-portrait-up{
+        display: none;
     }
 }
 

@@ -126,7 +126,7 @@ export default function SwiperCarousel() {
                         ))}
             </Swiper>
         }
-        
+        <div className={styles.hrRule}></div>
     </div>
     
   )
