@@ -3,7 +3,7 @@ module.exports = function(app) {
   app.use(
     'api/Email/SendEmail',
     createProxyMiddleware({
-      target: 'https://emailsapi.azurewebsites.net/api/Email/SendEmail',
+      target: 'https://emailsapi.azurewebsites.net/',
       changeOrigin: true,
     })
   );

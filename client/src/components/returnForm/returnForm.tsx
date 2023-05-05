@@ -137,9 +137,10 @@ const ReturnForm:React.FC<ReturnFormProps> = ({updateStep, step, updateSubmitFor
 
     const [fileUploadList, setfileUploadList] = useState<any[]>([]);
 
-  
+    let globalFile: any;
     let fileHandler =(index: number)=>(event: any) =>{
         let tempFile =  Array.from(event.target.files ?? []);
+        globalFile = event.target.files[0];
         // setfileUploadList({tempFile});
         let fileIndex = 0;
         let tempFileList = [...fileUploadList]
@@ -211,16 +212,17 @@ const ReturnForm:React.FC<ReturnFormProps> = ({updateStep, step, updateSubmitFor
       }
       const createNewFormData = ()=>{
         const formData:any = new FormData();
-        formData.append("date","1679547600000");
-        formData.append( "pickupAddress", "Address");
-        formData.append( "code", "AY1BVZ")
-        formData.append( "firstName","Return")
-        formData.append("lastName", "Done")
-        formData.append("email","eli.dasda@gmail.com")
-        formData.append("phoneNumber", "3322222222")
-        formData.append('storeNames[0].item',"23");
-        formData.append('storeNames[0].storeType',"on");
-        formData.append('storeNames[0].name',"StoreName");
+        formData.append("Date","1679547600000");
+        formData.append( "PickupAddress", "Address");
+        formData.append( "Code", "AY1BVZ");
+        formData.append( "FirstName","Return");
+        formData.append("LastName", "Done");
+        formData.append("Email","eli.dasda@gmail.com")
+        formData.append("PhoneNumber", "3322222222")
+        formData.append('StoreNames[0].item',"23");
+        formData.append('StoreNames[0].storeType',"on");
+        formData.append('StoreNames[0].name',"StoreName");
+        formData.append("TimeSlot","8to10");
         return formData;
       }
 
@@ -234,10 +236,12 @@ const ReturnForm:React.FC<ReturnFormProps> = ({updateStep, step, updateSubmitFor
             data.sNames[index].receipt = tempList;
         })
         sampleData.receipt = data.sNames[0].receipt
-        console.log(data.sNames[0].receipt);
+        console.log(globalFile);
         let formSample = createNewFormData();
-        // formSample.append('receipt[0]',data.sNames[0].receipt);
-        sendEmail(sampleData);
+        // let fileT = data.sNames[0].receipt? data.sNames[0]?.receipt : data.sNames[0]?.receipt;
+        // @ts-ignore
+        formSample.append('Receipt',document.getElementById("reSubmitForm")?.querySelectorAll("input[type=file]")[0]?.files);
+        sendEmail(formSample);
         console.log(data.sNames.length)
         console.log(JSON.stringify(data, null, 2));
         console.log('currentStep',step)

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3da92471.css",
-    "main.js": "/static/js/main.c6d7ad66.js",
+    "main.js": "/static/js/main.676ddb31.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/reBanner_mobile.png": "/static/media/reBanner_mobile.396a0108777b1052bdb9.png",
     "static/media/lotus-pose.gif": "/static/media/lotus-pose.546d7fe1c97d52d1b45d.gif",
@@ -36,11 +36,11 @@
     "static/media/Puma.png": "/static/media/Puma.dc1444673d918ad6c9fe.png",
     "index.html": "/index.html",
     "main.3da92471.css.map": "/static/css/main.3da92471.css.map",
-    "main.c6d7ad66.js.map": "/static/js/main.c6d7ad66.js.map",
+    "main.676ddb31.js.map": "/static/js/main.676ddb31.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3da92471.css",
-    "static/js/main.c6d7ad66.js"
+    "static/js/main.676ddb31.js"
   ]
 }
