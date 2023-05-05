@@ -51,7 +51,7 @@ export default function Banner() {
         </div>
         <div className={styles.reBanner_text}>
           <h1 className={styles.desktop_only}>
-            Want to <span className={styles.primary_text}>Return,</span> Consider it <span className={styles.primary_text}> Done!</span>
+            RISHI SUCKS
           </h1>
           <h1 className={`${styles.mobile_only} ${styles.mobile_heading}`}>
             We Return your shopped Items for you
@@ -63,10 +63,8 @@ export default function Banner() {
             We Collect your Recently Purchased, Unwanted items from your Doorstep, Pack them up, and make sure they're Returned
             to the Store or Post office before the deadline so you can get your Refund on time.
           </div>
-          <button className={styles.reBanner_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
-            {/* <Link to="/submitReturn">Return NOW!</Link>  */}
-            <a className={styles.reBanner_btn_link} href='javascript:;'>Return Now</a>
-          </button>
+          
+          <Link to="/submitReturn">Return NOW!</Link> 
 
         </div>
       </div>
@@ -75,6 +73,9 @@ export default function Banner() {
           We return <span id="rollWords">Your Impulsive Buys</span> for you.
         </h2>
       </div>
+      <>
+        
+      </>
     </>
   )
 }

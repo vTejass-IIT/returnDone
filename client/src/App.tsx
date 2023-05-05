@@ -11,6 +11,7 @@ import Footer from './components/reFooter/reFooter';
 import Faq from './components/faq/faq';
 import SwiperCarousel from './components/swiperComponent/swiper';
 import ReSteps from './components/reSteps/reSteps';
+import {sendEmail} from './services/emailService';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <>
           <Header></Header>
           <Banner></Banner>
+          <button onClick={sendEmail}>Click me</button>
           <SwiperCarousel></SwiperCarousel>
           <ReSteps></ReSteps>
           <Benefits></Benefits>

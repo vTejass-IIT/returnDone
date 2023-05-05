@@ -8,7 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import Header from '../reHeader/header';
-
+import {sendEmail} from '../../services/emailService';
 import styles from './returnForm.module.scss';
 type Name = {
     name: string;
@@ -189,11 +189,43 @@ const ReturnForm:React.FC<ReturnFormProps> = ({updateStep, step, updateSubmitFor
         console.log(tempFile);
         return tempFile;
     }
+    let sampleData:any = {
+        "timeSlot": "8to10",
+        "date": 1679547600000,
+        "storeNames": [
+          {
+            "item": 23,
+            "storeType": "on",
+            "name": "StoreName"
+          }
+        ],
+        "pickupAddress": "Address",
+        "phoneNumber": "3322222222",
+        "email": "disale.gita@gmail.com",
+        "lastName": "Done",
+        "firstName": "Return",
+        "code": "AY1BVZ",
+        "receipt": [
+          
+        ]
+      }
+      const createNewFormData = ()=>{
+        const formData:any = new FormData();
+        formData.append("date","1679547600000");
+        formData.append( "pickupAddress", "Address");
+        formData.append( "code", "AY1BVZ")
+        formData.append( "firstName","Return")
+        formData.append("lastName", "Done")
+        formData.append("email","eli.dasda@gmail.com")
+        formData.append("phoneNumber", "3322222222")
+        formData.append('storeNames[0].item',"23");
+        formData.append('storeNames[0].storeType',"on");
+        formData.append('storeNames[0].name',"StoreName");
+        return formData;
+      }
 
       const onSubmit = (data: returnSubmitForm) => {
         let result = createRandomSequence()
-        // console.log('result:',result)
-        // console.log(errors)
         let tempList = []
         data['code'] = result;
         console.log(fileUploadList.length,'fileupload')
@@ -201,14 +233,18 @@ const ReturnForm:React.FC<ReturnFormProps> = ({updateStep, step, updateSubmitFor
             tempList = getFileList(index);
             data.sNames[index].receipt = tempList;
         })
-        
+        sampleData.receipt = data.sNames[0].receipt
+        console.log(data.sNames[0].receipt);
+        let formSample = createNewFormData();
+        // formSample.append('receipt[0]',data.sNames[0].receipt);
+        sendEmail(sampleData);
         console.log(data.sNames.length)
         console.log(JSON.stringify(data, null, 2));
         console.log('currentStep',step)
         updateStep(2);
         updateSubmitFormData(data);
       };
-
+      
       const newdate = new Date();
       newdate.setDate(newdate.getDate() + 1);
       console.log(newdate)

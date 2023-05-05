@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.e941f622.css",
-    "main.js": "/static/js/main.b60486eb.js",
+    "main.css": "/static/css/main.3da92471.css",
+    "main.js": "/static/js/main.e109b2f3.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/reBanner_mobile.png": "/static/media/reBanner_mobile.396a0108777b1052bdb9.png",
     "static/media/lotus-pose.gif": "/static/media/lotus-pose.546d7fe1c97d52d1b45d.gif",
     "static/media/return_now_click.gif": "/static/media/return_now_click.648188b6b08698b138e9.gif",
     "static/media/reBanner.png": "/static/media/reBanner.de6ff00690cb8ba567b0.png",
     "static/media/calendar.gif": "/static/media/calendar.6ef7109788e59310f2ae.gif",
-    "static/media/reBanner_mobile.png": "/static/media/reBanner_mobile.a0726a2e51996dde0c6c.png",
     "static/media/money-bag.gif": "/static/media/money-bag.a2c612bf35eef1334267.gif",
     "static/media/Dicks_Sporting_Goods.png": "/static/media/Dicks_Sporting_Goods.2cca6ad59d47dffd1f3b.png",
     "static/media/VarelaRound-Regular.ttf": "/static/media/VarelaRound-Regular.e67ccd4a92677fdf8719.ttf",
@@ -35,12 +35,12 @@
     "static/media/Nike.png": "/static/media/Nike.0d1f3e97324b4388d3f3.png",
     "static/media/Puma.png": "/static/media/Puma.dc1444673d918ad6c9fe.png",
     "index.html": "/index.html",
-    "main.e941f622.css.map": "/static/css/main.e941f622.css.map",
-    "main.b60486eb.js.map": "/static/js/main.b60486eb.js.map",
+    "main.3da92471.css.map": "/static/css/main.3da92471.css.map",
+    "main.e109b2f3.js.map": "/static/js/main.e109b2f3.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e941f622.css",
-    "static/js/main.b60486eb.js"
+    "static/css/main.3da92471.css",
+    "static/js/main.e109b2f3.js"
   ]
 }
