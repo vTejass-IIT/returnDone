@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "cTn1QsP8Nz3JLVkEJZtQnklOVAIWZMCfhFHCoqJlfkQ=",
+  "Source": "SendEmailDotNetCoreWebAPI",
+  "BasePath": "_content/SendEmailDotNetCoreWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/SendEmailDotNetCoreWebAPI.props" />
+</Project>
