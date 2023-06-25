@@ -8,6 +8,11 @@ using MailKit.Net.Smtp;
 using System.Threading.Tasks;
 using MimeKit;
 using System;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
+using Google.Apis.Services;
+using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace SendEmailDotNetCoreWebAPI.Services
 {
@@ -15,6 +20,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
     {
         private readonly MailSettings _mailSettings;
         private string _messageBody;
+        private string _storeDetails;
 
         public MailService(IOptions<MailSettings> mailSettings)
         {
@@ -27,47 +33,135 @@ namespace SendEmailDotNetCoreWebAPI.Services
             var email = new MimeMessage();
 
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse("projectem2023@gmail.com"));
-            email.Subject = "New Order Placed";
-            var builder = new BodyBuilder();
-            // Create the message body
+            email.To.Add(MailboxAddress.Parse("returndone2023@gmail.com"));
+            email.Subject = "New Order Placed - " + customer.Code;
 
-            _messageBody = "<p>Time Slot: " + customer.TimeSlot + "</p>" +
-                     "<p>Date: " + customer.Date + "</p>" +
-                     "<p>Pickup Address: " + customer.PickupAddress + "</p>" +
-                     "<p>Phone Number: " + customer.PhoneNumber + "</p>" +
-                     "<p>Email: " + customer.Email + "</p>" +
-                     "<p>Last Name: " + customer.LastName + "</p>" +
+            DateTime earliestDate = DateTime.Parse(customer.StoreNames[0].StoreDeadlineDate).Date;
+
+            if (customer.StoreNames != null && customer.StoreNames.Count != 0 && customer.StoreNames.Count != 1)
+            {
+                foreach (var store in customer.StoreNames)
+                {
+                    if(DateTime.Parse(store.StoreDeadlineDate).Date < earliestDate.Date)
+                    {
+                        earliestDate = DateTime.Parse(store.StoreDeadlineDate).Date;
+                    }
+                }
+                customer.DeadlineDate = earliestDate.Date.ToString();
+            }
+
+            var builder = new BodyBuilder();
+
+            // Create the message body
+            _messageBody = "<p>Order Number: " + customer.Code + "</p>" +
                      "<p>First Name: " + customer.FirstName + "</p>" +
-                     "<p>Code: " + customer.Code + "</p><br>";
+                     "<p>Last Name: " + customer.LastName + "</p>" +
+                     "<p>Email: " + customer.Email + "</p>" +
+                     "<p>Phone Number: " + customer.PhoneNumber + "</p>" +
+                     "<p>Address Line1: " + customer.AddressLine1 + "</p>" +
+                     "<p>Address Line2: " + customer.AddressLine2 + "</p>" +
+                     "<p>City: " + customer.City + "</p>" +
+                     "<p>State: " + customer.State + "</p>" +
+                     "<p>Zip Code: " + customer.Zip + "</p>" +
+                     "<p>Return Deadline Date: " + customer.DeadlineDate + "</p>" +
+                     "<p>Pickup Date: " + customer.PickupDate + "</p>" +
+                     "<p>Pickup Time Slot: " + customer.TimeSlot + "</p>" +
+                     "<p>How did you hear about us: " + customer.Reference + "</p>";
 
             // Add the list of stores to the message body
-            _messageBody += "Stores:\n";
-            foreach (var store in customer.StoreNames)
+            _messageBody += "<b>Store and Item Details\n</b>";
+            if (customer.StoreNames != null && customer.StoreNames.Count != 0)
+                foreach (var store in customer.StoreNames)
             {
-                _messageBody += "<p>Name: " + store.Name + "</p>" +
+                _messageBody += "<p>Store Name: " + store.Name + "</p>" +
                      "<p>Store Type: " + store.StoreType + "</p>" +
-                     "<p>Item: " + store.Item + "</p>";
+                     "<p>Number of items: " + store.Item + "</p>" +
+                     "<p>Store Deadline Date: " + store.StoreDeadlineDate + "</p>";
 
             }
             // Add the list of receipts to the message body
-            _messageBody += "Receipts:\n";
-            if (customer.Receipt != null)
+          //  _messageBody += "Receipts:\n";
+            /*if (customer.Receipt.Count != 0 && customer.Receipt !=null )
             {
                 foreach (var receipt in customer.Receipt)
                 {
                     _messageBody += $"{receipt}\n";
                     _messageBody += $"{receipt.FileName}\n";
                 }
-            }
+            }*/
             _messageBody += "\n";
-
-
-
             builder.HtmlBody = _messageBody;
-            email.Body = builder.ToMessageBody();
+          
 
             //Attach files from each store
+
+            byte[] fileBytes;
+           if (customer.Receipt != null)
+                foreach (var file in customer.Receipt)
+                {
+                    if (file.Length > 0)
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            file.CopyTo(ms);
+                            fileBytes = ms.ToArray();
+                        }
+                        builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
+                    }
+                }
+            email.Body = builder.ToMessageBody();
+            try
+            {
+                using var smtp = new MailKit.Net.Smtp.SmtpClient();
+                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //Email to customer
+        public async Task SendEmailAsyncToCustomer(Customer customer)
+        {
+            var email = new MimeMessage();
+
+            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            email.To.Add(MailboxAddress.Parse(customer.Email));
+            email.Subject = "Your Return Done Order Confirmation - " + customer.Code;
+            var builder = new BodyBuilder();
+
+            // Create the message body
+            if (customer.StoreNames != null && customer.StoreNames.Count != 0)
+                foreach (var store in customer.StoreNames)
+                {
+                    if (store.Item !=1 ) 
+                        _storeDetails +=  store.Name + " - " + store.Item + " items<br>";
+                    else if (store.Item == 1)
+                        _storeDetails += store.Name + " - " + store.Item + " item<br>";
+                }
+
+            _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
+                "<p>We are pleased to inform you that the pickup slot for your Return Done Order has been confirmed.</br></p>" +
+                "<p><b> Order Number: </b>" + customer.Code +
+                "<p><b>Pickup Details</b>" +
+                "<br>Pickup Address: " + customer.AddressLine1 + ", " + customer.AddressLine2 + ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
+                "<br>Pickup Date: " + customer.PickupDate +
+                "<br>Pickup Time Slot: " + customer.TimeSlot + "</p>" +
+
+                "<p><b>Item Details</b><br>" + _storeDetails + "</p>" +
+
+                "<p>You <b>must be present</b> physically at the time of pickup in order to verify the items you are requesting to return.</br></p>" +
+                "<p>If you need to make changes to your return pickup slot, we are happy to assist you. To cancel or reschedule your pickup, please send an email to <u>returndone2023@gmail.com</u> with your order number and desired changes.</br></p>" +
+                "<p>Please note that you may cancel your pickup up to 2 hours before the start of your scheduled pickup slot, and reschedule for any slot on the following day or later. Our team will do its best to accommodate your request and provide you with updated pickup details.</br></p>" +
+                "<p>If you have any questions or concerns, please don't hesitate to contact us. We're always happy to help.</br></p>" +
+                "<p>Best regards,<br>Return Done Team</p>";
+         
+
+            builder.HtmlBody = _messageBody;
 
             byte[] fileBytes;
             if (customer.Receipt != null)
@@ -83,42 +177,12 @@ namespace SendEmailDotNetCoreWebAPI.Services
                         builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
                     }
                 }
-            try
-            {
-                using var smtp = new SmtpClient();
-                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
-                smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
-                await smtp.SendAsync(email);
-                smtp.Disconnect(true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
-
-        //Email to customer
-        public async Task SendEmailAsyncToCustomer(Customer customer)
-        {
-            var email = new MimeMessage();
-
-            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(customer.Email));
-            email.Subject = "Your order has been placed with Return Done!";
-            var builder = new BodyBuilder();
-            // Create the message body
-
-            _messageBody = "<p>Thank you from Return Done team!</p>" +
-                     "<p>Your pickup request has been received.</p>" +
-                     "<p>Please use " + customer.Code + " as your reference number for any future communication related to this order.</p>";
-
-            builder.HtmlBody = _messageBody;
             email.Body = builder.ToMessageBody();
 
             try
             {
-                using var smtp = new SmtpClient();
+                using var smtp = new MailKit.Net.Smtp.SmtpClient();
                 smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
                 smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
                 await smtp.SendAsync(email);

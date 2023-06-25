@@ -4,6 +4,7 @@ using SendEmailDotNetCoreWebAPI.Model;
 using System;
 using System.Threading.Tasks;
 using SendEmailDotNetCoreWebAPI.Services;
+using System.Collections.Generic;
 
 namespace SendEmailDotNetCoreWebAPI.Controllers
 {
@@ -21,17 +22,16 @@ namespace SendEmailDotNetCoreWebAPI.Controllers
         }
 
         [HttpPost("SendEmail")]
-        public async Task<IActionResult> SendEmail([FromBody] Customer customer)
+        public async Task<IActionResult> SendEmail([FromForm] Customer customer)
         {
             try
             {
                 // Send an email with attachments to Return Done Team
                 await _mailService.SendEmailAsync(customer);
 
-                //Email to Customer
+                // Email to Customer
                 await _mailService.SendEmailAsyncToCustomer(customer);
 
-                // Return the customer data as a JSON response
                 return Ok(customer);
             }
             catch (Exception ex)

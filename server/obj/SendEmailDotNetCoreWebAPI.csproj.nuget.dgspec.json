@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vtejass/School/ProjectsWork/ReturnDoneCode/returnDone/server/SendEmailDotNetCoreWebAPI.csproj": {}
+    "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj": {}
   },
   "projects": {
-    "/Users/vtejass/School/ProjectsWork/ReturnDoneCode/returnDone/server/SendEmailDotNetCoreWebAPI.csproj": {
+    "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vtejass/School/ProjectsWork/ReturnDoneCode/returnDone/server/SendEmailDotNetCoreWebAPI.csproj",
+        "projectUniqueName": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj",
         "projectName": "SendEmailDotNetCoreWebAPI",
-        "projectPath": "/Users/vtejass/School/ProjectsWork/ReturnDoneCode/returnDone/server/SendEmailDotNetCoreWebAPI.csproj",
-        "packagesPath": "/Users/vtejass/.nuget/packages/",
-        "outputPath": "/Users/vtejass/School/ProjectsWork/ReturnDoneCode/returnDone/server/obj/",
+        "projectPath": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj",
+        "packagesPath": "/Users/gitadisale/.nuget/packages/",
+        "outputPath": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/vtejass/.nuget/NuGet/NuGet.Config"
+          "/Users/gitadisale/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +39,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Google.Apis": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Google.Apis.Drive.v3": {
+              "target": "Package",
+              "version": "[1.60.0.3034, )"
+            },
+            "Google.Apis.Sheets.v4": {
+              "target": "Package",
+              "version": "[1.60.0.2979, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[3.3.0, )"
@@ -58,20 +71,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -80,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }
