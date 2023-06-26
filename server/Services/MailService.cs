@@ -20,6 +20,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
     {
         private readonly MailSettings _mailSettings;
         private string _messageBody;
+        private string _messageBody1;
         private string _storeDetails;
 
         public MailService(IOptions<MailSettings> mailSettings)
@@ -80,7 +81,8 @@ namespace SendEmailDotNetCoreWebAPI.Services
 
             }
             // Add the list of receipts to the message body
-          //  _messageBody += "Receipts:\n";
+
+            //  _messageBody += "Receipts:\n";
             /*if (customer.Receipt.Count != 0 && customer.Receipt !=null )
             {
                 foreach (var receipt in customer.Receipt)
@@ -89,8 +91,56 @@ namespace SendEmailDotNetCoreWebAPI.Services
                     _messageBody += $"{receipt.FileName}\n";
                 }
             }*/
+
+            _messageBody1 = "<table style='border-collapse: collapse;'>";
+            // Add the column names as the header row
+            _messageBody1 += "<tr>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Timestamp</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Email Address</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>First Name</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Last Name</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Phone Number</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>How did you hear about us?</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Address Line 1</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Address Line 2</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>City</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>State</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Zip Code</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Store Name and Items</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Upload all receipts and return labels</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Pickup Date</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Pickup Time Slot</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Return Deadline Date</th>";
+            _messageBody1 += "</tr>";
+
+            // Add the data rows
+            foreach (var store in customer.StoreNames)
+            {
+                _messageBody1 += "<tr>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + DateTime.Now + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Email + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.FirstName + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.LastName + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.PhoneNumber + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Reference + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.AddressLine1 + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.AddressLine2 + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.City + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.State + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Zip + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + store.Name + " - " + store.Item + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + "" + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.PickupDate + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.TimeSlot + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.DeadlineDate + "</td>";
+                _messageBody1 += "</tr>";
+            }
+            _messageBody1 += "</table>";
+
             _messageBody += "\n";
-            builder.HtmlBody = _messageBody;
+
+            _messageBody1 += "\n";
+            builder.HtmlBody = _messageBody + _messageBody1;
           
 
             //Attach files from each store
