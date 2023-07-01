@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8ieGp2pRIYyWAZqgdQSQA1WW4RO10YM2vgCHN/Q9y4HHVrh72rjlAtsCcd0Q2gaj92wEFzd55cwn6bRANa+9pw==",
+  "dgSpecHash": "DD7xVaXCormyIiQgPC90GwZ6zqWcKbDhI8aKXBThrf+uFNImok+N2VVmZruPhA1pxqZ4qdjgWd6F8OkiXKRdXg==",
   "success": true,
-  "projectFilePath": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj",
+  "projectFilePath": "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/SendEmailDotNetCoreWebAPI.csproj",
   "expectedPackageFiles": [
     "/Users/gitadisale/.nuget/packages/google.apis/1.60.0/google.apis.1.60.0.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/google.apis.auth/1.60.0/google.apis.auth.1.60.0.nupkg.sha512",
@@ -11,6 +11,7 @@
     "/Users/gitadisale/.nuget/packages/google.apis.sheets.v4/1.60.0.2979/google.apis.sheets.v4.1.60.0.2979.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/mailkit/3.3.0/mailkit.3.3.0.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/gitadisale/.nuget/packages/microsoft.office.interop.outlook/15.0.4797.1004/microsoft.office.interop.outlook.15.0.4797.1004.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/mimekit/3.3.0/mimekit.3.3.0.nupkg.sha512",
     "/Users/gitadisale/.nuget/packages/newtonsoft.json/13.0.2/newtonsoft.json.13.0.2.nupkg.sha512",

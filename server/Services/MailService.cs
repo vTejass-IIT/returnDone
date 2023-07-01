@@ -33,8 +33,8 @@ namespace SendEmailDotNetCoreWebAPI.Services
         {
             var email = new MimeMessage();
 
-            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse("returndone2023@gmail.com"));
+            email.Sender = new MailboxAddress("Return Done", _mailSettings.Mail);
+            email.To.Add(MailboxAddress.Parse("support@returndone.com"));
             email.Subject = "New Order Placed - " + customer.Code;
 
             DateTime earliestDate = DateTime.Parse(customer.StoreNames[0].StoreDeadlineDate).Date;
@@ -81,16 +81,6 @@ namespace SendEmailDotNetCoreWebAPI.Services
 
             }
             // Add the list of receipts to the message body
-
-            //  _messageBody += "Receipts:\n";
-            /*if (customer.Receipt.Count != 0 && customer.Receipt !=null )
-            {
-                foreach (var receipt in customer.Receipt)
-                {
-                    _messageBody += $"{receipt}\n";
-                    _messageBody += $"{receipt.FileName}\n";
-                }
-            }*/
 
             _messageBody1 = "<table style='border-collapse: collapse;'>";
             // Add the column names as the header row
@@ -179,7 +169,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
         {
             var email = new MimeMessage();
 
-            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            email.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
             email.To.Add(MailboxAddress.Parse(customer.Email));
             email.Subject = "Your Return Done Order Confirmation - " + customer.Code;
             var builder = new BodyBuilder();

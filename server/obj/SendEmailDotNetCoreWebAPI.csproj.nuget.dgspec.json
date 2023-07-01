@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj": {}
+    "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/SendEmailDotNetCoreWebAPI.csproj": {}
   },
   "projects": {
-    "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj": {
+    "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/SendEmailDotNetCoreWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj",
+        "projectUniqueName": "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/SendEmailDotNetCoreWebAPI.csproj",
         "projectName": "SendEmailDotNetCoreWebAPI",
-        "projectPath": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/SendEmailDotNetCoreWebAPI.csproj",
+        "projectPath": "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/SendEmailDotNetCoreWebAPI.csproj",
         "packagesPath": "/Users/gitadisale/.nuget/packages/",
-        "outputPath": "/Users/gitadisale/Desktop/SendEmailDotNetCoreWebAPI-master/obj/",
+        "outputPath": "/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/gitadisale/.nuget/NuGet/NuGet.Config"
@@ -54,6 +54,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[3.3.0, )"
+            },
+            "Microsoft.Office.Interop.Outlook": {
+              "target": "Package",
+              "version": "[15.0.4797.1004, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
