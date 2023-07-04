@@ -15,6 +15,7 @@
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/Google.Apis.Drive.v3.dll
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/Google.Apis.Sheets.v4.dll
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/MailKit.dll
+/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/Microsoft.Office.Interop.Outlook.dll
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/Microsoft.OpenApi.dll
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/MimeKit.dll
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/PubTmp/Out/Newtonsoft.Json.dll

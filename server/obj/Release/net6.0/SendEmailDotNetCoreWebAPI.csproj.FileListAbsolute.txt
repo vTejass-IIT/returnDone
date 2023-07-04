@@ -86,3 +86,4 @@
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/SendEmailDotNetCoreWebAPI.pdb
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/SendEmailDotNetCoreWebAPI.genruntimeconfig.cache
 /Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/obj/Release/net6.0/ref/SendEmailDotNetCoreWebAPI.dll
+/Users/gitadisale/Desktop/Startup/Actual Code 2023/returnDone/server/bin/Release/net6.0/Microsoft.Office.Interop.Outlook.dll

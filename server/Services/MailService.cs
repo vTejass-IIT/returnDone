@@ -226,20 +226,12 @@ namespace SendEmailDotNetCoreWebAPI.Services
            
             try
              {
-                if (Regex.IsMatch(customer.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
-                {
                     using var smtp = new MailKit.Net.Smtp.SmtpClient();
                     smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
                     smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
                     await smtp.SendAsync(email);
                     smtp.Disconnect(true);
-                    result = "Customer Email Sent!";
-                }
-                else
-                {
-                    result = "Customer Email is Invalid!";
-                }
-                    
+                    result = "Customer Email Success/Fail!";
              }
              catch (Exception ex)
              {
