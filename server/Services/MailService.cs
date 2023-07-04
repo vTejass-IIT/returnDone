@@ -13,6 +13,7 @@ using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace SendEmailDotNetCoreWebAPI.Services
 {
@@ -21,6 +22,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
         private readonly MailSettings _mailSettings;
         private string _messageBody;
         private string _messageBody1;
+        private string _messageBody2;
         private string _storeDetails;
 
         public MailService(IOptions<MailSettings> mailSettings)
@@ -33,7 +35,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
         {
             var email = new MimeMessage();
 
-            email.Sender = new MailboxAddress("Return Done", _mailSettings.Mail);
+            email.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
             email.To.Add(MailboxAddress.Parse("support@returndone.com"));
             email.Subject = "New Order Placed - " + customer.Code;
 
@@ -43,6 +45,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
             {
                 foreach (var store in customer.StoreNames)
                 {
+                    //if (store.StoreDeadlineDate != null)
                     if(DateTime.Parse(store.StoreDeadlineDate).Date < earliestDate.Date)
                     {
                         earliestDate = DateTime.Parse(store.StoreDeadlineDate).Date;
@@ -80,9 +83,9 @@ namespace SendEmailDotNetCoreWebAPI.Services
                      "<p>Store Deadline Date: " + store.StoreDeadlineDate + "</p>";
 
             }
-            // Add the list of receipts to the message body
 
             _messageBody1 = "<table style='border-collapse: collapse;'>";
+
             // Add the column names as the header row
             _messageBody1 += "<tr>";
             _messageBody1 += "<th style='border: 1px solid black;'>Timestamp</th>";
@@ -169,68 +172,99 @@ namespace SendEmailDotNetCoreWebAPI.Services
         {
             var email = new MimeMessage();
 
-            email.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
-            email.To.Add(MailboxAddress.Parse(customer.Email));
-            email.Subject = "Your Return Done Order Confirmation - " + customer.Code;
-            var builder = new BodyBuilder();
+             email.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
+             email.To.Add(MailboxAddress.Parse(customer.Email));
+             email.Subject = "Your Return Done Order Confirmation - " + customer.Code;
+             var builder = new BodyBuilder();
 
-            // Create the message body
-            if (customer.StoreNames != null && customer.StoreNames.Count != 0)
-                foreach (var store in customer.StoreNames)
-                {
-                    if (store.Item !=1 ) 
-                        _storeDetails +=  store.Name + " - " + store.Item + " items<br>";
-                    else if (store.Item == 1)
-                        _storeDetails += store.Name + " - " + store.Item + " item<br>";
-                }
+             // Create the message body
+             if (customer.StoreNames != null && customer.StoreNames.Count != 0)
+                 foreach (var store in customer.StoreNames)
+                 {
+                     if (store.Item !=1 ) 
+                         _storeDetails +=  store.Name + " - " + store.Item + " items<br>";
+                     else if (store.Item == 1)
+                         _storeDetails += store.Name + " - " + store.Item + " item<br>";
+                 }
 
-            _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
-                "<p>We are pleased to inform you that the pickup slot for your Return Done Order has been confirmed.</br></p>" +
-                "<p><b> Order Number: </b>" + customer.Code +
-                "<p><b>Pickup Details</b>" +
-                "<br>Pickup Address: " + customer.AddressLine1 + ", " + customer.AddressLine2 + ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
-                "<br>Pickup Date: " + customer.PickupDate +
-                "<br>Pickup Time Slot: " + customer.TimeSlot + "</p>" +
+             _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
+                 "<p>We are pleased to inform you that the pickup slot for your Return Done Order has been confirmed.</br></p>" +
+                 "<p><b> Order Number: </b>" + customer.Code +
+                 "<p><b>Pickup Details</b>" +
+                 "<br>Pickup Address: " + customer.AddressLine1 + ", " + customer.AddressLine2 + ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
+                 "<br>Pickup Date: " + customer.PickupDate +
+                 "<br>Pickup Time Slot: " + customer.TimeSlot + "</p>" +
 
-                "<p><b>Item Details</b><br>" + _storeDetails + "</p>" +
+                 "<p><b>Item Details</b><br>" + _storeDetails + "</p>" +
 
-                "<p>You <b>must be present</b> physically at the time of pickup in order to verify the items you are requesting to return.</br></p>" +
-                "<p>If you need to make changes to your return pickup slot, we are happy to assist you. To cancel or reschedule your pickup, please send an email to <u>returndone2023@gmail.com</u> with your order number and desired changes.</br></p>" +
-                "<p>Please note that you may cancel your pickup up to 2 hours before the start of your scheduled pickup slot, and reschedule for any slot on the following day or later. Our team will do its best to accommodate your request and provide you with updated pickup details.</br></p>" +
-                "<p>If you have any questions or concerns, please don't hesitate to contact us. We're always happy to help.</br></p>" +
-                "<p>Best regards,<br>Return Done Team</p>";
-         
+                 "<p>You <b>must be present</b> physically at the time of pickup in order to verify the items you are requesting to return.</br></p>" +
+                 "<p>If you need to make changes to your return pickup slot, we are happy to assist you. To cancel or reschedule your pickup, please send an email to <u>support@returndone.com</u> with your order number and desired changes.</br></p>" +
+                 "<p>Please note that you may cancel your pickup up to 2 hours before the start of your scheduled pickup slot, and reschedule for any slot on the following day or later. Our team will do its best to accommodate your request and provide you with updated pickup details.</br></p>" +
+                 "<p>If you have any questions or concerns, please don't hesitate to contact us. We're always happy to help.</br></p>" +
+                 "<p>Best regards,<br>Return Done Team</p>";
 
-            builder.HtmlBody = _messageBody;
 
-            byte[] fileBytes;
-            if (customer.Receipt != null)
-                foreach (var file in customer.Receipt)
-                {
-                    if (file.Length > 0)
-                    {
-                        using (var ms = new MemoryStream())
-                        {
-                            file.CopyTo(ms);
-                            fileBytes = ms.ToArray();
-                        }
-                        builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
-                    }
-                }
+             builder.HtmlBody = _messageBody;
 
-            email.Body = builder.ToMessageBody();
+             byte[] fileBytes;
+             if (customer.Receipt != null)
+                 foreach (var file in customer.Receipt)
+                 {
+                     if (file.Length > 0)
+                     {
+                         using (var ms = new MemoryStream())
+                         {
+                             file.CopyTo(ms);
+                             fileBytes = ms.ToArray();
+                         }
+                         builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
+                     }
+                 }
 
+             email.Body = builder.ToMessageBody();
+            var result = "";
+           
             try
-            {
-                using var smtp = new MailKit.Net.Smtp.SmtpClient();
-                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
-                smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
-                await smtp.SendAsync(email);
-                smtp.Disconnect(true);
-            }
-            catch (Exception ex)
-            {
+             {
+                if (Regex.IsMatch(customer.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    using var smtp = new MailKit.Net.Smtp.SmtpClient();
+                    smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                    smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
+                    await smtp.SendAsync(email);
+                    smtp.Disconnect(true);
+                    result = "Customer Email Sent!";
+                }
+                else
+                {
+                    result = "Customer Email is Invalid!";
+                }
+                    
+             }
+             catch (Exception ex)
+             {
                 throw ex;
+             }
+            finally
+            {
+                var emailTOUS = new MimeMessage();
+                emailTOUS.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
+                emailTOUS.To.Add(MailboxAddress.Parse("support@returndone.com"));
+                emailTOUS.Subject = result;
+
+                var builder2 = new BodyBuilder();
+                _messageBody2 = "<p>" + result + "</p>" +
+                                "<br><p>Customer Email: " + customer.Email + "</p></br>";
+
+                builder.HtmlBody = _messageBody2;
+                emailTOUS.Body = builder.ToMessageBody();
+
+                using var smtp1 = new MailKit.Net.Smtp.SmtpClient();
+                smtp1.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                smtp1.Authenticate(_mailSettings.Mail, _mailSettings.Password);
+                await smtp1.SendAsync(emailTOUS);
+                smtp1.Disconnect(true);
+
             }
         }
 
