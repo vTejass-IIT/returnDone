@@ -39,19 +39,30 @@ namespace SendEmailDotNetCoreWebAPI.Services
             email.To.Add(MailboxAddress.Parse("support@returndone.com"));
             email.Subject = "New Order Placed - " + customer.Code;
 
-            DateTime earliestDate = DateTime.Parse(customer.StoreNames[0].StoreDeadlineDate).Date;
+            DateTime earliestDate = DateTime.MinValue;
+            if (customer.StoreNames != null && customer.StoreNames.Count != 0 && customer.StoreNames.Count != 1)
+            {
+                foreach (var store in customer.StoreNames)
+                {
+                    if (store.StoreDeadlineDate != null) { 
+                        earliestDate = DateTime.Parse(customer.StoreNames[0].StoreDeadlineDate).Date;}
+                }
+            }
 
             if (customer.StoreNames != null && customer.StoreNames.Count != 0 && customer.StoreNames.Count != 1)
             {
                 foreach (var store in customer.StoreNames)
                 {
-                    //if (store.StoreDeadlineDate != null)
+                    if (store.StoreDeadlineDate != null)
                     if(DateTime.Parse(store.StoreDeadlineDate).Date < earliestDate.Date)
                     {
                         earliestDate = DateTime.Parse(store.StoreDeadlineDate).Date;
                     }
                 }
-                customer.DeadlineDate = earliestDate.Date.ToString();
+                if (earliestDate != DateTime.MinValue)
+                    customer.DeadlineDate = earliestDate.Date.ToString();
+                else
+                    customer.DeadlineDate = "".ToString();
             }
 
             var builder = new BodyBuilder();
@@ -77,10 +88,16 @@ namespace SendEmailDotNetCoreWebAPI.Services
             if (customer.StoreNames != null && customer.StoreNames.Count != 0)
                 foreach (var store in customer.StoreNames)
             {
-                _messageBody += "<p>Store Name: " + store.Name + "</p>" +
-                     "<p>Store Type: " + store.StoreType + "</p>" +
-                     "<p>Number of items: " + store.Item + "</p>" +
-                     "<p>Store Deadline Date: " + store.StoreDeadlineDate + "</p>";
+                    _messageBody += "<p>Store Name: " + store.Name + "</p>" +
+                         "<p>Store Type: " + store.StoreType + "</p>" +
+                         "<p>Number of items: " + store.Item + "</p>";
+
+                    if (!string.IsNullOrEmpty(store.StoreDeadlineDate)) {
+                        _messageBody += "<p>Store Deadline Date: " + store.StoreDeadlineDate + "</p>";
+                    }
+                    else {
+                        _messageBody += "<p>Store Deadline Date: Deadline Date is Empty! </p>";
+                    }
 
             }
 
