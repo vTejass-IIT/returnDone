@@ -11,20 +11,20 @@ function Benefits() {
         const [curCardData, setCurCardData] = useState([
                 {
                         imgSrc: Img1,
-                        heading: 'Hassle-free Returns',
-                        description: 'Don\'t worry about the hassle of packaging and shipping your returns. We take care of everything, including doorstep pickup for items to be returned.'
+                        heading: 'Convenience',
+                        description: 'We guarantee to pick up your items within your chosen time slot and return them to the post office or store before the return deadline.'
                 }, {
                         imgSrc: Img2,
-                        heading: 'Save Time',
-                        description: 'We know that returning items can be time-consuming, so we aim to save you around 3 hours of your valuable time by handling the entire return process for you.'
+                        heading: 'Hassle-free Returns',
+                        description: 'No boxing, taping, or printing required. We take care of everything so that you can relax.'
                 }, {
                         imgSrc: Img3,
-                        heading: 'Professional Packaging',
-                        description: 'No boxing, No Taping, No Printing, No Labeling. We take care of everything by professionally packaging your items, giving you peace of mind.'
+                        heading: 'Time Savings',
+                        description: 'With Return Done, you don\'t have to spend time and energy packaging your items and driving to the post office yourself.'
                 }, {
                         imgSrc: Img4,
-                        heading: 'Forget Deadline Anxiety',
-                        description: 'Never miss a return deadline again no matter how busy you are. We return your packages in a timely manner saving you a lot of money.'
+                        heading: 'Professional Packaging',
+                        description: 'We package your items with utmost care so that they are not damaged in transit and you can receive your deserved refund.'
                 }
         ]);
         return (
@@ -39,24 +39,13 @@ function Benefits() {
                                                                 imgSrc={item.imgSrc}
                                                                 heading={item.heading}
                                                                 description={item.description}
-                                                                shadow={true}
+                                                                shadow={false}
                                                         ></Cards>
                                                 ))
                                         }
 
                                 </div>
                         </section>
-                        <div className={styles.pricing}>
-                                {/* <h2>What is Lorem Ipsum?</h2> */}
-                                <h3> Life is too short to do your returns yourself</h3>
-                                <h3> Focus on more important things and leave the returns to us.</h3>
-                                        <p>
-                                                <button className={styles.reBanner_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
-                                                        <a className={styles.reBanner_btn_link} href='javascript:;'>Return Now</a>
-                                                </button>
-                                        </p>
-                                
-                        </div>
                         {/* <div className={styles.hrRule}>
                         </div> */}
                 </>

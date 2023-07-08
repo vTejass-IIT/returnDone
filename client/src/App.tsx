@@ -12,6 +12,9 @@ import Faq from './components/faq/faq';
 import SwiperCarousel from './components/swiperComponent/swiper';
 import ReSteps from './components/reSteps/reSteps';
 import {sendEmail} from './services/emailService';
+import SuccessPage from './components/SuccessPage/successPage';
+import Pricing from './components/rePricing/pricing';
+import Testimonials from './components/Testimonials/testimonials';
 
 function App() {
   return (
@@ -24,12 +27,12 @@ function App() {
         <>
           <Header></Header>
           <Banner></Banner>
-          <button onClick={sendEmail}>Click me</button>
+          {/* <button onClick={sendEmail}>Click me</button> */}
           <SwiperCarousel></SwiperCarousel>
           <ReSteps></ReSteps>
           <Benefits></Benefits>
-          
-          
+          <Testimonials></Testimonials>
+          <Pricing></Pricing>
           <Faq></Faq>
           <Footer></Footer>
         </>
@@ -38,6 +41,11 @@ function App() {
           <FormPage></FormPage>
         </>
       } />
+      <Route path="/success" element={<>
+          <SuccessPage></SuccessPage>
+        </>
+      } />
+      
       </Routes>
     </div>
     </>

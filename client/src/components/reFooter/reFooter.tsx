@@ -21,7 +21,7 @@ function Footer() {
                         <h4>Get in Touch</h4>
                         <div>
                             <p>
-                                <span><b>Email: </b></span> <span><a href="mailto:returndone2023@gmail.com">returndone2023@gmail.com</a></span>
+                                <span><b>Email: </b></span> <span><a href="mailto:support@returndone.com">support@returndone.com</a></span>
                             </p>
                             <p>
                                 <span><b>Phone: </b></span> <span><a href="tel:312-934-5955">(312) 934-5955</a></span>
@@ -53,6 +53,19 @@ function Footer() {
                             </li>
                         </ul>
                     </div>
+                    {/* <div className={styles.reFooter_section_contact}>
+                    <div>
+                        <div>
+                            <p>
+                                <span><a href="mailto:support@returndone.com">Terms &amp; Conditions</a></span>
+                            </p>
+                            <p>
+                                <span><a href="tel:312-934-5955">Privacy Policy</a></span>
+                            </p>
+                            
+                        </div>
+                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className={styles.reFooter_copy}>
