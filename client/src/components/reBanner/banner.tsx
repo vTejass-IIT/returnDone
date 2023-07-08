@@ -43,28 +43,34 @@ export default function Banner() {
         <div id="imageParallax" className={`${styles.reBanner_container} ${styles.aspect16_9} ${styles.imageParallax}`}>
           {/* <img src={reBanner}></img> */}
           {/* <div className='overlay'></div> */}
-          <picture>
-            <source media="(min-width:600px)" srcSet={reBanner}/>
-            <source media="(max-width:599px)" srcSet={reBannerMobile}/>
-            <img src={reBanner} alt=""></img>
-          </picture>
+          {/* <div className={styles.reBanner_inner}> */}
+            <picture>
+              <source media="(min-width:600px)" srcSet={reBanner} />
+              <source media="(max-width:599px)" srcSet={reBannerMobile} />
+              <img src={reBanner} alt=""></img>
+            </picture>
+            <div className={styles.banner_artifact}></div>
+          {/* </div> */}
         </div>
         <div className={styles.reBanner_text}>
           <h1 className={styles.desktop_only}>
-            RISHI SUCKS
+            We Return your shopped Items for you
           </h1>
           <h1 className={`${styles.mobile_only} ${styles.mobile_heading}`}>
             We Return your shopped Items for you
           </h1>
 
-          <h5>We return your shopped items for you.</h5>
-          <h5>Save more than 2 hours of your valuable time with our hassle-free returns.</h5>
-          <div className={`${styles.mobile_only} ${styles.mobile_desc}`}>
+          {/* <h5>We return your shopped items for you.</h5>
+          <h5>Save more than 2 hours of your valuable time with our hassle-free returns.</h5> */}
+          
+          <div className={`${styles.mobile_desc}`}>
             We Collect your Recently Purchased, Unwanted items from your Doorstep, Pack them up, and make sure they're Returned
             to the Store or Post office before the deadline so you can get your Refund on time.
           </div>
+          <div className={styles.reBanner_link_parent}>
+            <Link to="/submitReturn" className={styles.reBanner_link_btn}>Return NOW!</Link>
+          </div>
           
-          <Link to="/submitReturn">Return NOW!</Link> 
 
         </div>
       </div>
@@ -74,7 +80,7 @@ export default function Banner() {
         </h2>
       </div>
       <>
-        
+
       </>
     </>
   )

@@ -4,7 +4,7 @@
 // }
 
 .brand_carousel{
-    padding: 6% 4%;
+    padding: 6% 8% 2% 8%;
     background: $white;
     @include for-phone-only{
         padding: 12% 4%;
@@ -52,7 +52,7 @@
     width: 45%;
     margin: 0 auto;
     height: 4px;
-    margin-top: 12%;
+    margin-top: 10%;
     background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
     @include for-phone-only{
        width: 70%;

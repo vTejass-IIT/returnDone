@@ -1,24 +1,26 @@
 @import '../../utils/variables.module.scss';
 
-.reBanner{
+.reBanner {
     position: relative;
     width: 100%;
     height: auto;
-    padding-bottom: 32.95%;
-    
-    @include for-tab-only-potrait{
+    padding-bottom: 38.5%;
+
+    @include for-tab-only-potrait {
         padding-bottom: 159.95%;
     }
+
     @include for-tab-only{
-        padding-bottom: 32.95%;
+        padding-bottom: 66.7%;
     }
-    @include for-phone-only{
+    @include for-phone-only {
         padding-bottom: 159.95%;
     }
+
     // overflow: hidden;
     // padding-bottom: 100%;
-    
-    &_container{
+
+    &_container {
         position: absolute;
         top: 0;
         right: 0;
@@ -27,53 +29,66 @@
         background: $primaryColor;
         width: 100%;
         height: 100%;
+        display: flex;
+        overflow: hidden;
+        border-bottom: 10px solid white;
+
         // max-height: 420px;
-        @include for-phone-only{
+        @include for-phone-only {
             // max-height: 85vh;
             overflow: hidden;
         }
-        &::before{
-            @include for-phone-only{
+
+        &::before {
+            @include for-phone-only {
                 content: "";
                 position: absolute;
                 top: 0;
                 width: 100%;
                 height: 100%;
                 display: block;
-                background: -webkit-linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2) , rgba(13,150,146,0.6));
+                background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(13, 150, 146, 0.6));
             }
         }
-        img{
-            width: 100%;
-            max-width: 100%;
-            @include for-phone-only{
+
+        img {
+            width: 60%;
+            position: absolute;
+            object-fit: cover;
+            object-position: -125px 0;
+
+            @include for-phone-only {
                 // height: 85vh;
             }
+
             // height: auto;
             // max-height: 420px;
         }
 
-        .overlay{
-            background-color: rgba(0,0,0,0.7);
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7);
             width: 100%;
             height: 100%;
         }
 
     }
-    &_text{
+
+    &_text {
         position: absolute;
         top: 18%;
-        left: 54%;
+        // left: 54%;
         transform: translate(-67%, -0%);
-        -webkit-transform: translate(-67%,-0%);
+        -webkit-transform: translate(-67%, -0%);
         width: 100%;
+        color: white;
 
-        
+        width: 49%;
+        right: -31%;
 
-        @include for-tab-only-potrait{
+        @include for-tab-only-potrait {
             left: auto;
             transform: translate(0%, -0%);
-            -webkit-transform: translate(0%,-0%);
+            -webkit-transform: translate(0%, -0%);
             top: 0%;
             height: 100%;
             display: flex;
@@ -81,88 +96,111 @@
             flex-direction: column;
         }
 
-        @include for-phone-only{
+        @include for-phone-only {
             left: auto;
             transform: translate(0%, -0%);
-            -webkit-transform: translate(0%,-0%);
+            -webkit-transform: translate(0%, -0%);
             top: 0%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             flex-direction: column;
         }
-        h1{
+
+        h1 {
             font-size: 3rem;
             margin-bottom: 2rem;
-            @include for-tab-only{
+
+            @include for-tab-only {
                 font-size: 3rem;
                 margin-bottom: 1rem;
                 margin-top: 5vh;
             }
 
-            @include for-phone-only{
+            @include for-phone-only {
                 font-size: 2.5rem;
                 margin: 25vh 1rem 1rem 2rem;
                 text-align: left;
                 width: 85%;
             }
         }
-    
-        h5{
+
+        h5 {
             font-size: 1.15rem;
-            @include for-tab-only{
+
+            @include for-tab-only {
                 font-size: 1rem;
                 display: block;
             }
-            @include for-tab-only-potrait{
+
+            @include for-tab-only-potrait {
                 display: none;
             }
 
-            &:last-of-type{
+            &:last-of-type {
                 margin-bottom: 2rem;
-                @include for-tab-only{
+
+                @include for-tab-only {
                     margin-bottom: 1rem;
                 }
             }
         }
     }
 
-    &_btn{
+    &_link_btn {
         margin-top: 5px;
         @extend .secondaryButton;
         width: 150px;
         height: 50px;
         font-size: 1.15rem;
-        &_link{
-            color: $secondaryColor;
+
+        color: $secondaryColor;
             text-decoration: none;
             font-weight: bold;
-            &:visited,&:hover{
-                color: $secondaryColor !important;
+
+            &:visited,
+            &:hover {
+                color: $secondaryColor  !important;
             }
+
+        &_link {
+            
         }
 
-        @include for-tab-only-potrait{
+        @include for-tab-only-potrait {
             display: none;
         }
     }
+
+    &_link_btn{
+        @extend .secondaryButton;
+        width: 135px;
+        height: 44px;
+        display: inline-block;
+    vertical-align: middle;
+    padding: 8px 0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    }
 }
 
-.desktop_only{
+.desktop_only {
     display: block;
 
-    @include for-tab-only-potrait{
+    @include for-tab-only-potrait {
         display: none;
     }
 }
-.mobile_only{
+
+.mobile_only {
     display: none;
-    @include for-tab-only-potrait{
+
+    @include for-tab-only-potrait {
         display: block;
     }
 }
 
-h1.mobile_heading{
+h1.mobile_heading {
     display: none;
     color: $white;
     // font-family: Arial, Helvetica, sans-serif;
@@ -170,61 +208,68 @@ h1.mobile_heading{
     text-transform: capitalize;
     text-align: center;
     text-shadow: 3px 2px 2px #225957;
-    @include for-tab-only-potrait{
+
+    @include for-tab-only-potrait {
         display: block;
     }
 }
 
-.mobile_desc{
+.mobile_desc {
     color: $white;
     padding: 0 4% 5%;
-    font-size: 14px;
+    font-size: 18px;
 
-    @include for-tablet-portrait-up{
+    @include for-tablet-portrait-up {
         display: none;
     }
 }
 
-.primary_text{
+.primary_text {
     color: $primaryColor;
     // font-size: 2.5rem;
     // font-weight: bold;
     background: -webkit-linear-gradient(#0d9692, #203534);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    @include for-phone-only{
+
+    @include for-phone-only {
         display: block;
     }
 }
 
-  .re_header{
+.re_header {
     width: 45%;
     display: flex;
     padding: 2% 0;
-    h1{
+
+    h1 {
         color: white;
         display: flex;
         padding: 20% 20%;
     }
-  }
+}
 
-.reRolling_text{
+.reRolling_text {
     padding: 6% 0;
     background: $tertiaryColor;
-    @include for-phone-only{
+
+    @include for-phone-only {
         padding: 12% 4%;
     }
-    h2{
+
+    h2 {
         font-size: 3.75rem;
-        @include for-tab-only{
+
+        @include for-tab-only {
             font-size: 3em;
         }
 
-        @include for-phone-only{
+        @include for-phone-only {
             font-size: 1.85rem;
         }
     }
-    span{
+
+    span {
         color: $primaryColor;
         // font-size: 2.5rem;
         // font-weight: bold;
@@ -237,7 +282,31 @@ h1.mobile_heading{
 .fade_in {
     transition: opacity 1s ease;
 }
+
 .fade_out {
     opacity: 0;
     transition: opacity 1s ease;
+}
+
+.banner_artifact {
+    &:after {
+        content: '';
+        height: 100%;
+        width: 65%;
+        background: -webkit-linear-gradient(#0d9692 60%, #203534 );
+        margin-bottom: 30px;
+        float: left;
+        margin-right: 20px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: -10rem;
+        transform: skewX(-10deg);
+        border-left: 10px solid $white;
+        // border-bottom: 10px solid $white;
+        @include for-phone-only{
+            display: none;
+        }
+    }
+
 }

@@ -26,45 +26,6 @@
 
 }
 
-.pricing {
-   background: $white;
-   padding: 6% 0;
-   @include for-phone-only{
-      padding: 12% 0;
-   }
-   h3{
-      // font-size: 1.75rem;
-      // font-weight: normal;
-      font-size: 3.75rem;
-      margin: 0 auto;
-      width: 85%;
-      background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      @include for-tab-only{
-         font-size: 3rem;
-      }
-
-      @include for-phone-only{
-         font-size: 2rem;
-      }
-
-      &:last-of-type{
-         font-size: 2.25rem;
-         margin: 1rem auto;
-         @include for-tab-only{
-            font-size: 2rem;
-         }
-
-         @include for-phone-only{
-            font-size: 1.5rem;
-         }
-      }
-   }
-   
-}
-
 .reBanner_btn{
    @extend .secondaryButton;
    margin-top: 1rem;
@@ -79,15 +40,4 @@
            color: $secondaryColor !important;
        }
    }
-}
-
-.hrRule{
-   width: 45%;
-   margin: 0 auto;
-   height: 4px;
-   background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
-   @include for-phone-only{
-      width: 70%;
-   }
-   // border: 2px solid red;
 }

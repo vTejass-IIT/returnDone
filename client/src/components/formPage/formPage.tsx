@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import ReturnForm from '../returnForm/returnForm';
 import Header from '../reHeader/header';
 import Payment from '../paymentsPage/payment';
+import Footer from '../reFooter/reFooter';
+
+import styles from './formPage.module.scss';
 
 function FormPage() {
     const [returnStep, setReturnStep] = useState(1);
@@ -53,10 +56,10 @@ function FormPage() {
         "code": "NDGTZ0"
     }
 
-  return (<>
+  return (<section className={styles.reFormPage}>
     <Header></Header>
     <h2>
-        Submit for Return
+        Return Initiation Form
     </h2>
     <div>
         {returnStep == 1 && 
@@ -72,7 +75,8 @@ function FormPage() {
             </div>
         }
     </div>
-  </>
+    <Footer></Footer>
+  </section>
   )
 }
 
