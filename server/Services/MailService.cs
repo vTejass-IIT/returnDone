@@ -68,7 +68,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
             var builder = new BodyBuilder();
 
             // Create the message body
-            _messageBody = "<p>Order Number: " + customer.Code + "</p>" +
+            _messageBody = "<p>Request ID: " + customer.Code + "</p>" +
                      "<p>First Name: " + customer.FirstName + "</p>" +
                      "<p>Last Name: " + customer.LastName + "</p>" +
                      "<p>Email: " + customer.Email + "</p>" +
@@ -106,6 +106,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
             // Add the column names as the header row
             _messageBody1 += "<tr>";
             _messageBody1 += "<th style='border: 1px solid black;'>Timestamp</th>";
+            _messageBody1 += "<th style='border: 1px solid black;'>Request ID</th>";
             _messageBody1 += "<th style='border: 1px solid black;'>Email Address</th>";
             _messageBody1 += "<th style='border: 1px solid black;'>First Name</th>";
             _messageBody1 += "<th style='border: 1px solid black;'>Last Name</th>";
@@ -128,6 +129,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
             {
                 _messageBody1 += "<tr>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + DateTime.Now + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Code + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Email + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.FirstName + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.LastName + "</td>";
@@ -191,7 +193,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
 
              email.From.Add(new MailboxAddress("Return Done", _mailSettings.Mail));
              email.To.Add(MailboxAddress.Parse(customer.Email));
-             email.Subject = "Your Return Done Order Confirmation - " + customer.Code;
+             email.Subject = "Your Return Done Pickup Request Confirmation - " + customer.Code;
              var builder = new BodyBuilder();
 
              // Create the message body
@@ -205,8 +207,8 @@ namespace SendEmailDotNetCoreWebAPI.Services
                  }
 
              _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
-                 "<p>We are pleased to inform you that the pickup slot for your Return Done Order has been confirmed.</br></p>" +
-                 "<p><b> Order Number: </b>" + customer.Code +
+                 "<p>We are pleased to inform you that your Return Done pickup request has been confirmed.</br></p>" +
+                 "<p><b> Request ID: </b>" + customer.Code +
                  "<p><b>Pickup Details</b>" +
                  "<br>Pickup Address: " + customer.AddressLine1 + ", " + customer.AddressLine2 + ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
                  "<br>Pickup Date: " + customer.PickupDate +
@@ -214,9 +216,10 @@ namespace SendEmailDotNetCoreWebAPI.Services
 
                  "<p><b>Item Details</b><br>" + _storeDetails + "</p>" +
 
-                 "<p>You <b>must be present</b> physically at the time of pickup in order to verify the items you are requesting to return.</br></p>" +
-                 "<p>If you need to make changes to your return pickup slot, we are happy to assist you. To cancel or reschedule your pickup, please send an email to <u>support@returndone.com</u> with your order number and desired changes.</br></p>" +
-                 "<p>Please note that you may cancel your pickup up to 2 hours before the start of your scheduled pickup slot, and reschedule for any slot on the following day or later. Our team will do its best to accommodate your request and provide you with updated pickup details.</br></p>" +
+                 "<p>You <b>must be present</b> physically at the time of pickup so that our pickup specialist can verify the items you are requesting to return.</br></p>" +
+                 "<p>If you have not provided a return deadline date or uploaded your return labels through our Return Initiation Form, please send them to us by either emailing support@returndone.com along with your <b>request ID</b> or simply replying to this email. Please ensure that you send all the required information at least 2 hours before the start of your pickup time slot.</p>" +
+                 "<p>If you need to make changes to your chosen pickup slot, we are happy to assist you. To cancel or reschedule your pickup, please send an email to support@returndone.com with your <b>request ID</b> and desired changes.</p>" +
+                 "<p>Please note that you may cancel or reschedule your pickup up to 2 hours before the start of your scheduled pickup slot, and reschedule for any slot on the following day or later. Our team will do its best to accommodate your request and provide you with updated pickup details.</br></p>" +
                  "<p>If you have any questions or concerns, please don't hesitate to contact us. We're always happy to help.</br></p>" +
                  "<p>Best regards,<br>Return Done Team</p>";
 
@@ -248,7 +251,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
                     smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
                     await smtp.SendAsync(email);
                     smtp.Disconnect(true);
-                    result = "Customer Email Success/Fail!";
+                    result = "Customer Email Successfully Sent";
              }
              catch (Exception ex)
              {
