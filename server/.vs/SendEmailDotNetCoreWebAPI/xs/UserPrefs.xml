@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{93D2480B-85AD-4BC3-A66F-24CB6FC6A6C9}|_101SendEmailNotificationDoNetCoreWebAPI">
+  <MonoDevelop.Ide.ItemProperties.SendEmailDotNetCoreWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/MailService.cs">
+    <Files>
+      <File FileName="Services/MailService.cs" Line="197" Column="46" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SendEmailDotNetCoreWebAPI" expanded="True">
-            <Node name="SendEmailDotNetCoreWebAPI" expanded="True">
+            <Node name="SendEmailDotNetCoreWebAPI" expanded="True" selected="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Model" expanded="True">
-                <Node name="Customer.cs" selected="True" />
-              </Node>
+              <Node name="Model" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="Settings" expanded="True" />
             </Node>
@@ -21,7 +21,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.SendEmailDotNetCoreWebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

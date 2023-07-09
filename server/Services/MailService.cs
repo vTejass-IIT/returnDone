@@ -206,14 +206,19 @@ namespace SendEmailDotNetCoreWebAPI.Services
                          _storeDetails += store.Name + " - " + store.Item + " item<br>";
                  }
 
-             _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
-                 "<p>We are pleased to inform you that your Return Done pickup request has been confirmed.</br></p>" +
-                 "<p><b> Request ID: </b>" + customer.Code +
-                 "<p><b>Pickup Details</b>" +
-                 "<br>Pickup Address: " + customer.AddressLine1 + ", " + customer.AddressLine2 + ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
+            _messageBody = "<p>Dear " + customer.FirstName + ",</p>" +
+                "<p>We are pleased to inform you that your Return Done pickup request has been confirmed.</br></p>" +
+                "<p><b> Request ID: </b>" + customer.Code +
+                "<p><b>Pickup Details</b>" +
+                "<br>Pickup Address: " + customer.AddressLine1;
+                if (!string.IsNullOrEmpty(customer.AddressLine2))
+                {
+                    _messageBody += ", " + customer.AddressLine2;
+                }
+
+            _messageBody += ", " + customer.City + ", " + customer.State + ", "+ customer.Zip + 
                  "<br>Pickup Date: " + customer.PickupDate +
                  "<br>Pickup Time Slot: " + customer.TimeSlot + "</p>" +
-
                  "<p><b>Item Details</b><br>" + _storeDetails + "</p>" +
 
                  "<p>You <b>must be present</b> physically at the time of pickup so that our pickup specialist can verify the items you are requesting to return.</br></p>" +
