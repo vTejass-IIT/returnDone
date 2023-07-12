@@ -15,6 +15,8 @@ import {sendEmail} from './services/emailService';
 import SuccessPage from './components/SuccessPage/successPage';
 import Pricing from './components/rePricing/pricing';
 import Testimonials from './components/Testimonials/testimonials';
+// import TermsAndConditions from './components/TermsAndConditions/termsAndConditions';
+// import PrivacyPolicy from './components/PrivacyPolicy/privacyPolicy';
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
           <Benefits></Benefits>
           <Testimonials></Testimonials>
           <Pricing></Pricing>
-          <Faq></Faq>
+          {/* <Faq></Faq> */}
           <Footer></Footer>
         </>
         } />
@@ -45,6 +47,18 @@ function App() {
           <SuccessPage></SuccessPage>
         </>
       } />
+      <Route path="/faqs" element={<>
+          <Faq></Faq>
+        </>
+      }/>
+      {/* <Route path="/termsConditions" element={<>
+          <TermsAndConditions></TermsAndConditions>
+        </>
+      }/>
+      <Route path="/privacyPolicy" element={<>
+          <PrivacyPolicy></PrivacyPolicy>
+        </>
+      }/> */}
       
       </Routes>
     </div>

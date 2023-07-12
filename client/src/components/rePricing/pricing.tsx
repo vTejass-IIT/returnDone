@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import ImgPricing from '../../assets/pricing_section.png';
 import styles from './pricing.module.scss'
 
@@ -18,8 +19,8 @@ function Pricing() {
                                 <h3> Life is too short to do your returns yourself</h3>
                                 <h3> Focus on more important things and leave the returns to us.</h3>
                                         <p>
-                                                <button className={styles.reBanner_btn} onClick={()=>window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
-                                                        <a className={styles.reBanner_btn_link} href='javascript:;'>Return Now</a>
+                                                <button className={styles.reBanner_btn}>
+                                                  <Link to="/submitReturn" className={styles.reBanner_link_btn}>Return NOW!</Link>
                                                 </button>
                                         </p>
                                 

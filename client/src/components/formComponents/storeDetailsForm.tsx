@@ -278,6 +278,9 @@ const StoreDetailsForm: React.FC<StoreDetailsProps> = ({ mode, getStoreData, tog
                                         <div className={`${styles.storeType_group} ${errors.sNames && errors.sNames[index]?.storeType ? 'is-invalid' : ''}`}>
                                             {formMode == "edit" &&
                                                 <>
+                                                <div className={styles.label_group}>
+                                                    <label>Purchase Type <span className={styles.required}>*</span></label>
+                                                    <div className={styles.checkbox_group}>
                                                     <div className={styles.form_group}>
                                                         <input
                                                             id={`inStore` + index}
@@ -286,10 +289,10 @@ const StoreDetailsForm: React.FC<StoreDetailsProps> = ({ mode, getStoreData, tog
                                                             className={`form-control ${errors.sNames && errors.sNames[index]?.storeType ? 'is-invalid' : ''}`}
                                                             value="InStore"
                                                             // checked={true}
-                                                            onChange={() => setStorePurchase("instore")}
+                                                            onChange={() => setStorePurchase("In Store")}
                                                         />
                                                         <label htmlFor={`inStore` + index}>
-                                                            InStore
+                                                            In Store
                                                         </label>
                                                     </div>
                                                     <div className={`${styles.form_group}`}>
@@ -301,12 +304,15 @@ const StoreDetailsForm: React.FC<StoreDetailsProps> = ({ mode, getStoreData, tog
                                                             // checked={storePurchase == "online"}
                                                             // checked={false}
                                                             value="Online"
-                                                            onChange={() => setStorePurchase("online")}
+                                                            onChange={() => setStorePurchase("Online")}
                                                         />
                                                         <label htmlFor={`online` + index}>
                                                             Online
                                                         </label>
                                                     </div>
+                                                    </div>
+                                                
+                                                </div>
                                                 </>
                                             }
                                             {errors.sNames && errors.sNames[index]?.storeType && (
@@ -319,7 +325,7 @@ const StoreDetailsForm: React.FC<StoreDetailsProps> = ({ mode, getStoreData, tog
                                             <div className={styles.row_group}>
                                                 <div className={styles.form_group}>
                                                     <label htmlFor={`inStore` + index}>
-                                                        Purchase Type
+                                                    Purchase Type
                                                     </label>
                                                     <input
                                                         type="text"
@@ -364,8 +370,7 @@ const StoreDetailsForm: React.FC<StoreDetailsProps> = ({ mode, getStoreData, tog
                                                         </span> Tip
                                                         </h4>
                                                         <div>
-                                                        If you don't have the Return Label or Return Date ready, you could always mail us at 
-                                                        support@returndone.com with those details before the pickup date.
+                                                        If you don't have the Return Label or the Return Deadline Date ready with you, you can always email them to us later at support@returndone.com before the pickup time slot.
                                                         </div>
                                                     </div>
                                                 </div>

@@ -36,20 +36,20 @@ let sampleData = {
 function SuccessPage() {
   const navigate = useNavigate();
   const [dbData, setDbData] = useState<any>('');
+  const [storeItems, setStoreItems] = useState(0);
   useEffect(() => {
     let sessionKey = window.localStorage.getItem('user_session_key') || null;
-    // if(sessionKey == null){
-    //     navigate("/");
-    // } else {
-    //     checkStore(sessionKey)
-    // }
-    checkStore(sessionKey ? sessionKey : '');
+    if(sessionKey == null){
+        navigate("/");
+    } else {
+        checkStore(sessionKey)
+    }
   }, [])
   async function checkStore(sessionKey: string) {
     try {
       let data: any = await getKeyFromIndexedDBStore("formdata", sessionKey);
       if (data == undefined) {
-        // navigate("/");
+        navigate("/");
       } else {
         setDbData(data)
         console.log(data)
@@ -114,8 +114,9 @@ function SuccessPage() {
   const createNewFormData = (data: any) => {
     const formData: any = new FormData();
     let pickUpDate = getDateTime(data.pickupDate);
-
+    let count = 0
     data.sNames.forEach((store: any, index: string) => {
+      count = count + store.item;
       formData.append("StoreNames[" + index + "].item", store.item);
       formData.append("StoreNames[" + index + "].storeType", store.storeType);
       formData.append("StoreNames[" + index + "].name", store.name);
@@ -125,6 +126,9 @@ function SuccessPage() {
       });
 
     });
+    // console.log(count,"count")
+    setStoreItems(count);
+    formData.append("code",data.code)
     formData.append("pickUpDate", pickUpDate);
     // formData.append("deadlineDate", returnDeadLine);
     formData.append("reference", data.references);
@@ -177,27 +181,27 @@ function SuccessPage() {
       <Header></Header>
       <div className={styles.successPage}>
         <h3>
-          Thank you for placing your order
+          Thank you for placing your pickup request
         </h3>
         <p>
-          An email has been sent to <a href={`mailTo:${dbData.email}`}>{dbData.email}</a>
+          A confirmation email has been sent to <a href={`mailTo:${dbData.email}`}>{dbData.email}</a>
         </p>
         <div className={styles.successPage_table_row}>
           <div className={styles.successPage_table_left}>
           <div className={styles.successPage_row}>
-                <p className={styles.rowName}>Order Number</p>
-                <p className={styles.rowValue}>10{dbData.code}</p>
+                <p className={styles.rowName}>Request ID:</p>
+                <p className={styles.rowValue}>{dbData.code}</p>
               </div>
               <div className={styles.successPage_row}>
-                <p className={styles.rowName}>Number of Items</p>
-                <p className={styles.rowValue}>Order Number</p>
+                <p className={styles.rowName}>Number of Items:</p>
+                <p className={styles.rowValue}>{storeItems}</p>
               </div>
               <div className={styles.successPage_row}>
-                <p className={styles.rowName}>Pickup Date</p>
-                <p className={styles.rowValue}>{dbData.pickupDate}</p>
+                <p className={styles.rowName}>Pickup Date:</p>
+                <p className={styles.rowValue}>{getDateTime(dbData.pickupDate)}</p>
               </div>
               <div className={styles.successPage_row}>
-                <p className={styles.rowName}>Pickup time slot</p>
+                <p className={styles.rowName}>Pickup Time Slot:</p>
                 <p className={styles.rowValue}>{dbData.timeSlot}</p>
               </div>
           </div>
@@ -206,8 +210,8 @@ function SuccessPage() {
               <div className={`${styles.successPage_row} ${styles.successPage_address}`}>
                 <p className={styles.rowName}>Pickup Address</p>
                 <p className={styles.rowValue}>{dbData.addressLine1} </p>
-                <p>{dbData.addressLine2}, {dbData.city} </p>
-                <p>{dbData.state} {dbData.zip}</p>
+                <p>{dbData.addressLine2 && <span>{dbData.addressLine2} ,</span>} {dbData.city} </p>
+                <p>{dbData.state}, {dbData.zip}</p>
               </div>
             </div>
           </div>
@@ -232,7 +236,7 @@ function SuccessPage() {
             </span> Tip 1
             </h4>
             <div>
-            Skip the hassle of packing your items before pickup - at Return Done, we'll check the item condition for you to ensure a seamless return process.
+            Skip the hassle of packing your items before pickup. At Return Done, we check the condition of all items at the time of pickup. Moreover, we take care of taping, printing, and packaging so that you can relax.
             </div>
           </div>
           <div className={styles.successPage_tips_item}>
@@ -241,9 +245,19 @@ function SuccessPage() {
             </span> Tip 2
             </h4>
             <div>
-            Skip the hassle of packing your items before pickup - at Return Done, we'll check the item condition for you to ensure a seamless return process.
+            If you did not provide a return deadline date or upload your return labels in the Return Initiation Form, you can email them to us at <a href='mailTo:support@returndone.com'>support@returndone.com</a> along with your request ID at least 2 hours before the start of your pickup time slot.
             </div>
           </div>
+          <div className={styles.successPage_tips_item}>
+            <h4><span>
+              <img width="25" height="25" src={tipIcon}></img>
+            </span> Tip 3
+            </h4>
+            <div>
+            Choose to return on our Return Day (Saturday) to save an additional $2 on all your returns.
+            </div>
+          </div>
+          
         </div>
       </div>
       <Footer></Footer>

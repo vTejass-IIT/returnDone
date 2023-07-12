@@ -3,6 +3,9 @@
     padding: 2% 2%;
     margin: 0 4%;
     text-align: left;
+    a{
+        color: $primaryColor;
+    }
     h3{
         font-size: 2rem;
         background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
@@ -17,6 +20,13 @@
         border-radius: 25px;
         background: $tertiaryColor;
         margin: 2% 0;
+
+        @include for-tab-only-potrait{
+            flex-direction: column;
+        }
+        @include for-phone-only{
+            flex-direction: column;
+        }
     }
 
     &_table_left,&_table_right{
@@ -28,6 +38,12 @@
 
         p:first-child{
             padding-right: 2%;
+            @include for-tab-only-potrait{
+                flex-basis: 50%;
+            }
+            @include for-phone-only{
+                flex-basis: 50%;
+            }
         }
     }
 
@@ -43,12 +59,28 @@
     &_tips{
         display: flex;
         color: $white;
+        @include for-tab-only-potrait{
+            flex-direction: column;
+        }
+        @include for-phone-only{
+            flex-direction: column;
+        }
+        a{color: $white;}
         &_item{
             border-radius: 25px;
             flex-basis: 25%;
             padding: 2%;
             margin: 0 2% 0 0;
             background: $primaryColor;
+
+            @include for-tab-only-potrait{
+                margin: 0 2% 4% 0;
+                padding: 4%;
+            }
+            @include for-phone-only{
+                margin: 0 2% 4% 0;
+                padding: 4%;
+            }
         }
         img{
             width: 30px;
@@ -70,8 +102,18 @@
         font-size: 1.15rem;
         width: auto;
         color: $secondaryColor;
-            text-decoration: none;
-            font-weight: bold;
+        text-decoration: none;
+        font-weight: bold;
+        height: 45px;
+
+        @include for-tab-only-potrait{
+            font-size: 0.85rem;
+            height: 35px;
+        }
+        @include for-phone-only{
+            font-size: 0.85rem;
+            height: 35px;
+        }
     
             &:visited,
             &:hover {

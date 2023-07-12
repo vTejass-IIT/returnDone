@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './headerStyles.module.scss';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import reHeader from "../../assets/relogo_transparent.png";
 import $ from 'jquery'
 
@@ -22,7 +22,9 @@ const Header = () => {
       </div>
       <div className={styles.re_header_quickLinks}>
         <ul>
-          <li>
+          {curRoute == "/" && 
+            <>
+              <li>
             <a href="javascript:;" data-position="reBrands" onClick={moveToLocation()} >Where we return</a>
           </li>
           <li>
@@ -37,15 +39,28 @@ const Header = () => {
           <li>
             <a href="javascript:;" data-position="rePricing" onClick={moveToLocation()} >Pricing</a>
           </li>
-          <li>
-            <a href="javascript:;" data-position="reFAQs" onClick={moveToLocation()} >FAQs</a>
+            </>
+          }
+          {curRoute != "/" && 
+            <li className={styles.tab_visible}>
+              <Link to="/" className={`${styles.successPage_link_btn}`}>Home</Link>
+            </li>
+          }
+          {curRoute != "/faqs" && 
+            <li className={styles.tab_visible}>
+            <Link to="/faqs" className={`${styles.successPage_link_btn}`} target="_blank">FAQs</Link>
           </li>
+          }
+          
 
-          {curRoute != "/submitReturn" &&
-            <li>
-              <button className={styles.re_btn} onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfslRPRWnbZ4ZIo8BWX6IGtJXUqoV0zfV6fjtnJV8NCKdQayg/viewform', '_blank')}>
-                {/* <Link to="/submitReturn">Return NOW!</Link>  */}
-                <a href='javascript:;'>Return Now</a>
+          {curRoute != "/submitReturn" && curRoute != "/success" &&
+            <li className={styles.header_return_btn}>
+              <button className={styles.re_btn}>
+                <Link to="/submitReturn" className={styles.reBanner_link_btn}>
+                  {curRoute != "/success" &&
+                    <span>Return NOW!</span>
+                  }
+                </Link>
               </button>
             </li>
           }

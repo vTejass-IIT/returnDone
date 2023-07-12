@@ -51,6 +51,11 @@
             list-style: none;
             display: inline-block;
             margin: 0;
+
+            @include for-tab-only{
+                display: flex;
+                align-items: center;
+            }
             
             li{
                 display: inline-block;
@@ -66,6 +71,7 @@
                     &:visited{
                         color: inherit;
                     }
+
                 }
 
                 @include for-tab-only{
@@ -73,14 +79,20 @@
                 }
             
                 &:last-child{
-                    a{
-                        &:hover{
-                            text-decoration: none;
-                            font-size: inherit;
-                        }
-                    }
+                    // a{
+                    //     &:hover{
+                    //         text-decoration: none;
+                    //         font-size: inherit;
+                    //     }
+                    // }
                     @include for-tab-only{
                         display: block;
+                    }
+                }
+
+                &.tab_visible{
+                    @include for-tab-only{
+                        display: inline;
                     }
                 }
             }
@@ -106,6 +118,13 @@
             :visited{
                 color: inherit;
             }
+            :hover{
+                text-decoration: underline;
+            }
         }
     }
+}
+
+.header_return_btn{
+
 }

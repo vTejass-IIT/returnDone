@@ -4,6 +4,10 @@ import reHeader from "../../assets/relogo_transparent.png";
 // import fb from "../../assets/facebook.svg";
 import { faFacebook, faWhatsapp, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import privacy from "../../assets/docs/Return Done_Privacy Policy.pdf";
+import toc from "../../assets/docs/Return Done_T&C.pdf";
+import logo from "../../assets/icons/tipIcon.png";
 
 function Footer() {
     // let fbStyle = {
@@ -14,7 +18,9 @@ function Footer() {
         <footer className={styles.reFooter}>
             <div className={styles.reFooter_section}>
                 <div>
-                    <img src={reHeader}></img>
+                    <a href="/">
+                        <img src={reHeader}></img>
+                    </a>
                 </div>
                 <div className={styles.reFooter_section_contact}>
                     <div>
@@ -69,7 +75,16 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.reFooter_copy}>
-            <span>&copy;</span> 2023, All rights reserved
+                <p>
+                <span><span>&copy;</span> 2023, All rights reserved</span>
+                <span className={styles.footer_disc}></span>
+                </p>
+            
+            <p className={styles.reFooter_copy_toc}>
+            <a href={toc} target="_blank" >Terms &amp; Conditions</a>
+            <span className={styles.footer_disc}></span>
+            <a href={privacy} target="_blank" >Privacy Policy</a>
+            </p>
             </div>
         </footer>
     </>
