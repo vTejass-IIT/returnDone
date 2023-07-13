@@ -128,7 +128,7 @@ namespace SendEmailDotNetCoreWebAPI.Services
             foreach (var store in customer.StoreNames)
             {
                 _messageBody1 += "<tr>";
-                _messageBody1 += "<td style='border: 1px solid black;'>" + DateTime.Now + "</td>";
+                _messageBody1 += "<td style='border: 1px solid black;'>" + DateTimeOffset.Now + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Code + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.Email + "</td>";
                 _messageBody1 += "<td style='border: 1px solid black;'>" + customer.FirstName + "</td>";
