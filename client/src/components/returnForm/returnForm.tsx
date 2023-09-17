@@ -11,6 +11,7 @@ import OrderSummary from '../formComponents/orderSummary';
 import ReferenceForm from '../formComponents/referenceForm';
 
 import { IDBPDatabase } from 'idb';
+import AcceptTOC from '../formComponents/acceptTOC';
 
 
 type Store = {
@@ -56,6 +57,7 @@ const ReturnForm: React.FC<ReturnFormProps> = ({ updateStep, step, updateSubmitF
     const [orderSummaryMode, setOrderSummaryMode] = useState("init");
 
     const [orderPaymentBtn, setOrderPaymentBtn] = useState(false);
+    const [checkTOCStatus,setCheckTOCStatus] = useState(false);
 
     let setPersonalData = (finalData: any) => {
         setPersonalFormData(finalData);
@@ -80,6 +82,10 @@ const ReturnForm: React.FC<ReturnFormProps> = ({ updateStep, step, updateSubmitF
 
     let activateOrderSummary = (summaryMode: string) => {
         setOrderSummaryMode(summaryMode);
+    }
+
+    let toggleTOCStatus = () =>{
+        setCheckTOCStatus(!checkTOCStatus)
     }
 
     let activateReferencesForm = () => {
@@ -123,7 +129,7 @@ const ReturnForm: React.FC<ReturnFormProps> = ({ updateStep, step, updateSubmitF
         window.localStorage.setItem("user_session_key", result);
         console.log('initiate.....')
         addData('formdata',finalJSONData)
-        window.open("https://buy.stripe.com/test_dR6g080Re0z579S288","_blank")
+        window.open("https://buy.stripe.com/test_dR6g080Re0z579S288","_self");
         //test
         // history('/success');
         
@@ -151,11 +157,14 @@ const ReturnForm: React.FC<ReturnFormProps> = ({ updateStep, step, updateSubmitF
                         <div className={styles.row_group}>
                             <ReferenceForm mode={referenceFormMode} getReferenceFormData={setReferenceFormData} toggleOrderSummary={activateOrderSummary} togglePaymentBtn={setOrderPaymentBtn}></ReferenceForm>
                         </div>
+                        <div className={styles.row_group}>
+                            <AcceptTOC updateTOCStatus={toggleTOCStatus}></AcceptTOC>
+                        </div>
                     </div>
                     <div className={`${styles.right_form1} ${styles.sidebar}`}>
                         <div className={styles.component}>
                             <div className={styles.content}>
-                            <OrderSummary mode={orderSummaryMode} timeSlotData={timeSlotData} storeDetailsData={storeFormData} getOrderPaymentFlag={orderPaymentBtn} submitData={initiateSubmit}></OrderSummary>
+                            <OrderSummary mode={orderSummaryMode} timeSlotData={timeSlotData} storeDetailsData={storeFormData} getOrderPaymentFlag={orderPaymentBtn} submitData={initiateSubmit} tocStatus={checkTOCStatus}></OrderSummary>
                             </div>
                         </div>
                         

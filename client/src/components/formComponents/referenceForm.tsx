@@ -25,7 +25,7 @@ const ReferenceForm: React.FC<ReferenceFormProps> = ({ mode, getReferenceFormDat
         .min(1, 'Please select at least one reference')
         .required('Please select at least one reference'),
         referenceOther: Yup.string().
-        test("otherReferences", "Enter Other mode of References", (value: any) => {
+        test("otherReferences", "This field is required", (value: any) => {
             // console.log(value?.length)
             if (otherActive && value == "") return false; // no file provided
             else return true
@@ -104,10 +104,10 @@ const ReferenceForm: React.FC<ReferenceFormProps> = ({ mode, getReferenceFormDat
     ]
     return (
         <>
-            <div className={`${styles.personal_details} ${styles.form_accordion}`}>
+            <div className={`${styles.reference_details} ${styles.form_accordion}`}>
                 <div className={styles.form_accordion_head}>
                     <h3>
-                        Reference
+                        How did you hear about us?
                     </h3>
                     <div>
                         {formMode == "read" &&
@@ -150,7 +150,7 @@ const ReferenceForm: React.FC<ReferenceFormProps> = ({ mode, getReferenceFormDat
                         {(otherActive && formMode == "edit" ) &&
                              <div className={styles.row_group}>
                              <div className={styles.form_group}>
-                                 <label htmlFor="reFName">How Did you hear about us?</label>
+                                 <label htmlFor="reFName">Please Specify <span className={styles.required}>*</span></label>
                                  <input id="reFName"
                                      type="text"
                                      {...register('referenceOther')}

@@ -5,6 +5,9 @@ import reBanner from "../../assets/reBanner.png";
 import reBannerMobile from "../../assets/reBanner_mobile.png";
 import { Link } from 'react-router-dom';
 
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import $ from 'jquery'
 // import variables from '../variables.scss';
 
@@ -49,29 +52,12 @@ export default function Banner() {
               <source media="(max-width:599px)" srcSet={reBannerMobile} />
               <img src={reBanner} alt=""></img>
             </picture>
-            <div className={styles.banner_artifact}></div>
           {/* </div> */}
-        </div>
-        <div className={styles.reBanner_text}>
-          <h1 className={styles.desktop_only}>
-            We Return your shopped Items for you
-          </h1>
-          <h1 className={`${styles.mobile_only} ${styles.mobile_heading}`}>
-            We Return your shopped Items for you
-          </h1>
-
-          {/* <h5>We return your shopped items for you.</h5>
-          <h5>Save more than 2 hours of your valuable time with our hassle-free returns.</h5> */}
-          
-          <div className={`${styles.mobile_desc}`}>
-            We Collect your Recently Purchased, Unwanted items from your Doorstep, Pack them up, and make sure they're Returned
-            to the Store or Post office before the deadline so you can get your Refund on time.
+          <div className={styles.banner_artifact}>
+                <Link to="/submitReturn" className={styles.reBanner_link_btn}>
+                    <span>Return Now <FontAwesomeIcon icon={faArrowRight} /></span>
+                </Link>
           </div>
-          <div className={styles.reBanner_link_parent}>
-            <Link to="/submitReturn" className={styles.reBanner_link_btn}>Return NOW!</Link>
-          </div>
-          
-
         </div>
       </div>
       <div className={styles.reRolling_text}>

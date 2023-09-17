@@ -1,21 +1,24 @@
+@import '../../utils/variables.module.scss';
+
 .reFormPage{
     padding: 4% 0 0;
-    h2,h3,h4{
+    h2{
         font-size: 3rem;
         background: -webkit-linear-gradient(left, #0d9692 25%, #203534);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-    }
 
-    h3{
-        font-size: 1.8rem;
-    }
+        @include for-phone-only{
+            font-size: 2rem;
+        }
+      }
+    // .formComponents_store_group{
+        
+    // }
 
-    h4{
-        font-size: 1.2rem;
-    }
-
-    label{
-        color: #0d9692;
-    }
+    // .reFooter_reFooter_section_contact{
+    //     h4{
+    //         color: $white;
+    //     }
+    // }
 }

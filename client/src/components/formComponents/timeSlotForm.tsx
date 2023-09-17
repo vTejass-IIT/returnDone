@@ -36,8 +36,8 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
         timeSlot: Yup.string().required("This field is required"),
         addressLine1: Yup.string()
             .required('Address Line 1 is required'),
-        addressLine2: Yup.string()
-            .required('Address Line 2 is required'),
+        // addressLine2: Yup.string()
+        //     .required('Address Line 2 is required'),
         city: Yup.string()
             .required('City is required'),
         state: Yup.string()
@@ -176,7 +176,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
 
     return (
         <>
-            <div className={`${styles.register_form__time_slot} ${styles.form_accordion}`}>
+            <div className={`${styles.register_form__time_slot} ${styles.form_accordion} ${styles.timeSlot_details}`}>
                 <div className={styles.form_accordion_head}>
                     <h3>
                         Pickup Details
@@ -197,7 +197,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                                 <div className={styles.toggle_switch}>
                                     <input type="checkbox" className={styles.checkbox}
                                         {...register('returnDaySlot')} id="returnDaySlot"
-                                        onChange={() => {clearTimeSlotDate();setReturnDayStatus(!returnDayStatus)}}
+                                        onChange={() => {clearTimeSlotDate();setReturnDayStatus(!returnDayStatus);}}
                                         checked={returnDayStatus}
                                         />
                                     <label className={styles.label} htmlFor="returnDaySlot">
@@ -216,14 +216,14 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                         </div>
                         <div className={`${styles.row_group}`}>
                             <div className={`${styles.form_group} ${errors.timeSlot ? 'is-invalid' : ''}`}>
-                                <label htmlFor="pickupDate">Date:</label>
+                                <label htmlFor="pickupDate">Pickup Date <span className={styles.required}>*</span></label>
                                 <Controller
                                     render={(pickUpDateRef) => (
                                         <DatePicker
                                         selected={
-                                            pickUpDateRef.field.value ? new Date(Number(pickUpDateRef.field.value)) : undefined
+                                            timeSlotSelectedDate
                                         }
-                                        onChange={(date: Date) => {pickUpDateRef.field.onChange(date?.getTime());initiateSlots(date?.getTime())}}
+                                        onChange={(date: Date) => {setTimeSlotSelectedDate(date?.getTime());pickUpDateRef.field.onChange(date?.getTime());initiateSlots(date?.getTime())}}
                                             dateFormat={"MMMM d, yyyy"}
                                             startDate={null}
                                             minDate={new Date()}
@@ -249,8 +249,12 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                             </div>
                         </div>
                         {formMode == "edit" &&
-                            <div className={`${styles.form_group} ${styles.timeSlot_group} ${errors.timeSlot ? 'is-invalid' : ''}`}>
-                                <div className={`${styles.timeSlot_group_item} ${slots[0] == 0 ? styles.disabled : ''}`}>
+                            <>
+                                <div className={`${styles.form_group} ${styles.timeSlot_group} ${errors.timeSlot ? 'is-invalid' : ''}`}>
+                                    <div className={styles.label_group}>
+                                        <label>Pickup Time Slot <span className={styles.required}>*</span></label>
+                                        <div className={styles.checkbox_group}>
+                                             <div className={`${styles.timeSlot_group_item} ${slots[0] == 0 ? styles.disabled : ''}`}>
                                     <input id="8to10" value="8 AM - 10 AM" type="radio" {...register('timeSlot')}
                                         className={`form-control ${errors.timeSlot ? 'is-invalid' : ''}`}
                                         onChange={() => setTimeSlot("8 AM - 10 AM")}
@@ -262,14 +266,14 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                                     </label>
                                 </div>
                                 <div className={`${styles.timeSlot_group_item} ${slots[1] == 0 ? styles.disabled : ''}`}>
-                                    <input id="10to12" value="10 AM -  12 AM" type="radio" {...register('timeSlot')}
+                                    <input id="10to12" value="10 AM -  12 PM" type="radio" {...register('timeSlot')}
                                         className={`form-control ${errors.timeSlot ? 'is-invalid' : ''}`}
-                                        onChange={() => setTimeSlot("10 AM -  12 AM")}
-                                        checked={timeSlot == "10 AM -  12 AM"}
+                                        onChange={() => setTimeSlot("10 AM -  12 PM")}
+                                        checked={timeSlot == "10 AM -  12 PM"}
                                         disabled={slots[1] == 0}
                                     ></input>
                                     <label htmlFor="10to12">
-                                        10 AM -  12 AM
+                                        10 AM -  12 PM
                                     </label>
                                 </div>
                                 <div className={`${styles.timeSlot_group_item} ${slots[2] == 0 ? styles.disabled : ''}`}>
@@ -316,17 +320,20 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                                         6 PM - 8 PM
                                     </label>
                                 </div>
+                                        </div>
+                                    </div>
                                 {errors.timeSlot && (
                                     <div className="invalid-feedback">
                                         {errors.timeSlot?.message}
                                     </div>
                                 )}
                             </div>
+                            </>
                         }
                         {formMode == "read" &&
                             <div className={styles.row_group}>
                                 <div className={styles.form_group}>
-                                    <label htmlFor='reFNamen'>TimeSlot:</label>
+                                    <label htmlFor='reFNamen'>Pickup Time Slot <span className={styles.required}>*</span></label>
                                     <input id="reFName"
                                         type="text"
                                         className='form-control'
@@ -337,7 +344,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                         }
                         <div className={styles.row_group}>
                             <div className={styles.form_group}>
-                                <label htmlFor='addressLine1'>Address Line 1</label>
+                                <label htmlFor='addressLine1'>Address Line 1 <span className={styles.required}>*</span></label>
                                 <input
                                     type="text"
                                     id="addressLine1"
@@ -363,7 +370,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                         </div>
                         <div className={styles.row_group}>
                             <div className={styles.form_group}>
-                                <label htmlFor='reCity'>City</label>
+                                <label htmlFor='reCity'>City <span className={styles.required}>*</span></label>
                                 <input
                                     id="reCity"
                                     type="text"
@@ -375,7 +382,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                                 <div className="invalid-feedback">{errors.city?.message}</div>
                             </div>
                             <div className={styles.form_group}>
-                                <label htmlFor="state-dropdown">State</label>
+                                <label htmlFor="state-dropdown">State <span className={styles.required}>*</span></label>
                                 <div className={styles.state_dropdown_container}>
                                     <input
                                         type="text"
@@ -414,7 +421,7 @@ const TimeSlotForm: React.FC<TimeSlotProps> = ({ mode, toggleReferencesForm, get
                         </div>
                         <div className={styles.row_group}>
                             <div className={styles.form_group}>
-                                <label htmlFor='zipCode'>ZipCode</label>
+                                <label htmlFor='zipCode'>Zip Code <span className={styles.required}>*</span></label>
                                 <input
                                     id="zipCode"
                                     type="number"

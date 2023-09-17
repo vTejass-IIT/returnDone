@@ -16,15 +16,15 @@ function ReSteps() {
                 }, {
                         imgSrc: Img2,
                         heading: 'Choose Pickup Slot',
-                        description: 'Pick a date and time of your convenience when we can come and pick up your package from your door.'
+                        description: 'Pick a date and time of your convenience when we can come and pick up your package from your doorstep.'
                 }, {
                         imgSrc: Img3,
                         heading: 'Relax Now',
-                        description: 'We will come to your house during your chosen pickup time to collect the package and verify the information.'
+                        description: 'We will come to your house during your chosen pickup time slot to collect the package and verify the items to be returned.'
                 }, {
                         imgSrc: Img4,
                         heading: 'Get Refunded',
-                        description: 'We will work with the retailer to return the package and initiate your refund at the earliest.'
+                        description: 'We will work with the retailer to return the package so that your refund can be initiated at the earliest.'
                 }
         ]);
         return (

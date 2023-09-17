@@ -30,7 +30,7 @@ function Benefits() {
         return (
                 <>
                         <section className={styles.re_Benefits} id="reBenefits">
-                                <h3>How we are Revolutionizing Returns</h3>
+                                <h3>How we are Reimagining Returns</h3>
                                 <div className={styles.re_Benefits_cards}>
                                         {
                                                 curCardData.map((item, index) => (

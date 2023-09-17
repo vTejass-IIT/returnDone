@@ -8,7 +8,7 @@ $tertiaryColor: #c4e4e3;
 }
 
 @mixin for-tab-only {
-    @media (max-width: 1119px ) { @content; }
+    @media (max-width: 1180px ) { @content; }
 }
 
 @mixin for-tab-only-potrait {
